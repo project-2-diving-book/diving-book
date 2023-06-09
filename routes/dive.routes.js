@@ -13,6 +13,8 @@ const isLoggedOut = require("../middleware/isLoggedOut");
 // Routes
 ////////
 
+///////////////   Displaying Diving Sites
+
 router.get("/diving-sites", (req, res, next) => {
 	Dive.find()
 		.populate("user")
@@ -24,6 +26,8 @@ router.get("/diving-sites", (req, res, next) => {
 			next(error);
 		});
 });
+
+//////////////////  CREATE Diving Site
 
 router.get("/diving-sites/create", isLoggedIn, (req, res, next) => {
 	res.render("dives/diving-sites-create");
@@ -48,6 +52,41 @@ router.post("/diving-sites/create", isLoggedIn, (req, res, next) => {
 		})
 		.catch((error) => {
 			console.log("Error on creating a dive", error);
+			next(error);
+		});
+});
+
+////////////////////    Update Diving Site
+
+router.get("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
+	const { id } = req.params;
+
+	Dive.findById(id)
+		.then((diveFromDB) => {
+			res.render("dives/diving-site-edit", { diveFromDB });
+		})
+		.catch((error) => {
+			console.log("this is an error on update of a dive ", error);
+			next(error);
+		});
+});
+
+router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
+	const { id } = req.params;
+	const { divingSite, depth, duration, buddy, comments, placesToEat } =
+		req.body;
+
+	Dive.findByIdAndUpdate(
+		id,
+		{ divingSite, depth, duration, buddy, comments, placesToEat },
+		{ new: true }
+	)
+
+		.then(() => {
+			res.redirect("/diving-sites");
+		})
+		.catch((error) => {
+			console.log("this is an error on update of a dive and redirect ", error);
 			next(error);
 		});
 });
