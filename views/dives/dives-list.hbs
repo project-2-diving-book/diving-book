@@ -1,0 +1,17 @@
+{{#each allDives}}
+	<hr />
+	<h3>Diving Site:</h3>
+	{{divingSite}}
+	<h3>Depth:</h3>
+	{{depth}}
+	<h3>Duration:</h3>
+	{{duration}}
+	<h3>User:</h3>
+	{{user.username}}
+	{{! here we can make an A TAG to link the user profile and shit }}
+	<hr />
+{{else}}
+	<p>There are not diving sites yes</p>
+	<a href="/diving-sites/create">Log your first one</a>
+
+{{/each}}

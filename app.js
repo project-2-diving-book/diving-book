@@ -1,3 +1,5 @@
+/** @format */
+
 // ℹ️ Gets access to environment variables/settings
 // https://www.npmjs.com/package/dotenv
 require("dotenv").config();
@@ -25,7 +27,9 @@ app.locals.appTitle = `${capitalize(projectName)} created with IronLauncher`;
 
 // 👇 Start handling routes here
 const indexRoutes = require("./routes/index.routes");
+const diveRoutes = require("./routes/dive.routes");
 app.use("/", indexRoutes);
+app.use("/", diveRoutes);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/auth", authRoutes);

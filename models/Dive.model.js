@@ -25,6 +25,9 @@ const diveSchema = new Schema(
 		placesToEat: {
 			type: String,
 		},
+		comments: {
+			type: String,
+		},
 		user: {
 			type: Schema.Types.ObjectId,
 			ref: "User",
@@ -36,3 +39,5 @@ const diveSchema = new Schema(
 );
 
 const Dive = model("Dive", diveSchema);
+
+module.exports = Dive;
