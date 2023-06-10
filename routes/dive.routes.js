@@ -27,6 +27,22 @@ router.get("/diving-sites", (req, res, next) => {
 		});
 });
 
+///////////////   Displaying Diving Site Details
+
+router.get("/diving-site-details/:id", (req, res, next) => {
+	const {id} = req.params
+
+	Dive.findById(id)
+		.populate("user")
+		.then(diveDetails => {
+			res.render("dives/diving-site-details", { diveDetails });
+		})
+		.catch(error => {
+			console.log("Error finding the details for this dive", error);
+			next(error);
+		})
+});
+
 //////////////////  CREATE Diving Site
 
 router.get("/diving-sites/create", isLoggedIn, (req, res, next) => {
@@ -89,6 +105,21 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
 			console.log("this is an error on update of a dive and redirect ", error);
 			next(error);
 		});
+});
+
+////////////////////    Delete Diving Site
+
+router.post("/diving-sites/:id/delete", isLoggedIn, (req, res, next) => {
+	const { id } = req.params;
+
+	Dive.findByIdAndDelete(id)
+		.then(() => {
+			res.redirect("/diving-sites");
+		})
+		.catch((error) => {
+			console.log("Error deleting this dive", error);
+			next(error);
+		})
 });
 
 module.exports = router;
