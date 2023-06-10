@@ -1,24 +1,32 @@
-{{#each allDives}}
-  <hr />
-  <h3>Diving Site:</h3>
-  {{divingSite}}
-  <h3>Depth:</h3>
-  {{depth}}
-  <h3>Duration:</h3>
-  {{duration}}
-  <h3>User:</h3>
-  {{user.username}}
-  <br />
+<div class="diving-list-container">
+	{{#each allDives}}
 
-  <a href="/diving-site-details/{{this._id}}">View details</a> <br />
+		<div class="card card-dive">
+			<img
+				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+				class="card-img-top"
+				alt="Fissure in Sandstone"
+			/>
+			<div class="card-body">
+				<h5 class="card-title">Diving Site:{{divingSite}}</h5>
+				<p class="card-text">Some quick example text to build on the card title
+					and make up the bulk of the card's content.</p>
+				<h6>Depth:</h6>
+				{{depth}}
+				<h6>Duration:</h6>
+				{{duration}}
+				<h6>User:</h6>
+				{{user.username}}
+				<a href="/diving-site-details/{{this._id}}">View details</a>
+			</div>
+			<form action="/diving-sites/{{this._id}}/delete" method="POST">
+				<button>Delete</button>
+			</form>
+		</div>
 
-  {{! here we can make an A TAG to link the user profile and shit }}
-  <form action="/diving-sites/{{this._id}}/delete" method="POST">
-    <button>Delete</button>
-  </form>
-  <hr />
-{{else}}
-  <p>There are not diving sites yes</p>
-  <a href="/diving-sites/create">Log your first one</a>
+	{{else}}
+		<p>There are not diving sites yes</p>
+		<a href="/diving-sites/create">Log your first one</a>
 
-{{/each}}
+	{{/each}}
+</div>
