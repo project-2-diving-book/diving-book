@@ -30,9 +30,8 @@
       name="comments"
       cols="30"
       rows="6"
-      value="{{diveFromDB.comments}}"
-      {{!  THIS HAS TO BE FIXED }}
-    > </textarea>
+      {{!  THIS HAS TO BE FIXED --------></textarea>> FIXED}}
+    >{{diveFromDB.comments}}</textarea>
   </label>
 
   <label>
@@ -42,3 +41,5 @@
 
   <button type="submit"> Edit </button>
 </form>
+
+<a href="/diving-site-details/{{diveFromDB._id}}">Cancel edit</a>
