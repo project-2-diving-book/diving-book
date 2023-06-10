@@ -1,24 +1,123 @@
-<div id="form">
-  <h2>Sign Up</h2>
-  <form action="/auth/signup" method="POST">
+<section class="h-100 bg-dark">
+	<form action="/auth/signup" method="POST">
+		<div class="container py-5 h-100">
+			<div class="row d-flex justify-content-center align-items-center h-100">
+				<div class="col">
+					<div class="card card-registration my-4">
+						<div class="row g-0">
+							<div class="col-xl-6 d-none d-xl-block">
+								<img
+									src="/images/user-form.png"
+									alt="Sample photo"
+									class="img-fluid"
+									style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;"
+								/>
+							</div>
+							<div class="col-xl-6">
+								<div class="card-body p-md-5 text-black">
+									<h3 class="mb-5 text-uppercase">User registration form</h3>
 
-    <label> Username
-      <input type="text" name="username" placeholder="Your username" />
-    </label>
+									<div class="row">
+										<div class="col-md-6 mb-4">
+											<div class="form-outline">
+												<input
+													type="text"
+													name="firstName"
+													class="form-control form-control-lg"
+												/>
+												<label class="form-label" for="form3Example1m">First
+													name</label>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="form-outline">
+												<input
+													type="text"
+													name="lastName"
+													class="form-control form-control-lg"
+												/>
+												<label class="form-label" for="form3Example1n">Last name</label>
+											</div>
+										</div>
+									</div>
 
-    <label> Email
-      <input type="email" name="email" placeholder="Your email" />
-    </label>
+									<div class="row">
+										<div class="col-md-6 mb-4">
+											<div class="form-outline">
+												<input
+													type="email"
+													name="email"
+													class="form-control form-control-lg"
+												/>
+												<label class="form-label" for="form3Example1m1">Email:
+												</label>
+											</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="form-outline">
+												<input
+													type="password"
+													name="password"
+													class="form-control form-control-lg"
+												/>
+												<label
+													class="form-label"
+													for="form3Example1n1"
+												>password</label>
+											</div>
+										</div>
+									</div>
 
-    <label> Password
-      <input type="password" name="password" placeholder="Your password" />
-    </label>
+									<div class="row">
+										<div class="col-md-6 mb-4">
 
-    <button type="submit">Sign Up</button>
+											<select class="select">
+												<option value="1">Begginer</option>
+												<option value="2">Open Water Diver</option>
+												<option value="3">Advanced Open Water Diver</option>
+												<option value="4">Resque Diver</option>
+												<option value="4">Divemaster</option>
+												<option value="5">Instructor</option>
 
+												{{! need to fix that }}
+											</select>
+											<label class="form-label" for="form3Example1n1">Diving
+												Level</label>
 
-    {{#if errorMessage}}
-      <p class="error">{{errorMessage}}</p>
-    {{/if}}
-  </form>
-</div>
+										</div>
+										<div class="col-md-6 mb-4">
+											<div class="form-outline">
+												<input
+													type="text"
+													name="username"
+													class="form-control form-control-lg"
+												/>
+												<label
+													class="form-label"
+													for="form3Example1n1"
+												>Username</label>
+											</div>
+										</div>
+
+									</div>
+
+									<div class="d-flex justify-content-end pt-3">
+										<button type="reset" class="btn btn-light btn-lg">Reset all</button>
+										<button
+											type="submit"
+											class="btn btn-warning btn-lg ms-2"
+										>Submit form</button>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{{#if errorMessage}}
+			<p class="error">{{errorMessage}}</p>
+		{{/if}}
+	</form>
+</section>
