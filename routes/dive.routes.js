@@ -83,7 +83,7 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
 	)
 
 		.then(() => {
-			res.redirect("/diving-sites");
+			res.redirect("/diving-sites	");
 		})
 		.catch((error) => {
 			console.log("this is an error on update of a dive and redirect ", error);
