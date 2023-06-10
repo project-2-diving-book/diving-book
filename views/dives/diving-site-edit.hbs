@@ -1,39 +1,44 @@
 <form method="post" action="/diving-sites/{{diveFromDB._id}}/edit">
-	<label>
-		Diving Site:
-		<input type="text" name="divingSite" value="{{diveFromDB.divingSite}}" />
-	</label>
+  <label>
+    Diving Site:
+    <input type="text" name="divingSite" value="{{diveFromDB.divingSite}}" />
+  </label>
 
-	<label>
-		Depth:
-		<input type="number" name="depth" min="0" value="{{diveFromDB.depth}}" />
-	</label>
+  <label>
+    Depth:
+    <input type="number" name="depth" min="0" value="{{diveFromDB.depth}}" />
+  </label>
 
-	<label>
-		Duration:
-		<input
-			type="number"
-			name="duration"
-			min="0"
-			value="{{diveFromDB.duration}}"
-		/>
-	</label>
+  <label>
+    Duration:
+    <input
+      type="number"
+      name="duration"
+      min="0"
+      value="{{diveFromDB.duration}}"
+    />
+  </label>
 
-	<label>
-		Comments:
-		<textarea
-			name="comments"
-			cols="30"
-			rows="6"
-			value="{{diveFromDB.comments}}"
-			{{!  THIS HAS TO BE FIXED }}
-		> </textarea>
-	</label>
+  <label>
+    Places to eat:
+    <input type="text" name="placesToEat" value="{{diveFromDB.placesToEat}}" />
+  </label>
 
-	<label>
-		Buddy:
-		<input type="text" name="buddy" value="{{diveFromDB.buddy}}" />
-	</label>
+  <label>
+    Comments:
+    <textarea
+      name="comments"
+      cols="30"
+      rows="6"
+      value="{{diveFromDB.comments}}"
+      {{!  THIS HAS TO BE FIXED }}
+    > </textarea>
+  </label>
 
-	<button type="submit"> Edit </button>
+  <label>
+    Buddy:
+    <input type="text" name="buddy" value="{{diveFromDB.buddy}}" />
+  </label>
+
+  <button type="submit"> Edit </button>
 </form>
