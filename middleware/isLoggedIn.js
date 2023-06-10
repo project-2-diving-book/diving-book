@@ -3,6 +3,7 @@ module.exports = (req, res, next) => {
   if (!req.session.currentUser) {
     return res.redirect("/auth/login");
   }
-
+  //console.log(req.session.currentUser)
+  //console.log(req.session.currentUser._id)
   next();
 };
