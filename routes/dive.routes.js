@@ -8,6 +8,7 @@ const User = require("../models/User.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
+const isUserThatCreatedDive = require("../middleware/isUserThatCreatedDive");
 
 ////////
 // Routes
@@ -74,7 +75,7 @@ router.post("/diving-sites/create", isLoggedIn, (req, res, next) => {
 
 ////////////////////    Update Diving Site
 
-router.get("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
+router.get("/diving-sites/:id/edit", isLoggedIn, isUserThatCreatedDive, (req, res, next) => {
 	const { id } = req.params;
 
 	Dive.findById(id)
@@ -109,7 +110,7 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
 
 ////////////////////    Delete Diving Site
 
-router.post("/diving-sites/:id/delete", isLoggedIn, (req, res, next) => {
+router.post("/diving-sites/:id/delete", isLoggedIn, isUserThatCreatedDive, (req, res, next) => {
 	const { id } = req.params;
 
 	Dive.findByIdAndDelete(id)

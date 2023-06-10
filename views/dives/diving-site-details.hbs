@@ -22,4 +22,7 @@
 
 <hr />
 <a href="/diving-sites/{{diveDetails._id}}/edit">edit</a> <br /> <br />
+{{#if errorMessage}}
+  <p class="error">{{errorMessage}}</p>
+{{/if}}
 <a href="/diving-sites">Back to dives list</a>
