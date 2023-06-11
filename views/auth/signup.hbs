@@ -1,5 +1,5 @@
 <section class="h-100">
-	<form action="/auth/signup" method="POST">
+	<form action="/auth/signup" method="POST" enctype="multipart/form-data">
 		<div class="container py-5 h-100">
 			<div class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col">
@@ -44,6 +44,7 @@
 									</div>
 
 									<div class="row">
+
 										<div class="col-md-6 mb-4">
 											<div class="form-outline">
 												<input
@@ -68,6 +69,20 @@
 												>password</label>
 											</div>
 										</div>
+										<div class="col-md-6 mb-4">
+											<div class="form-outline">
+												<input
+													type="file"
+													name="imgProfile"
+													class="form-control form-control-lg"
+												/>
+												<label
+													class="form-label"
+													for="form3Example1m1"
+												>Image</label>
+											</div>
+										</div>
+
 									</div>
 
 									<div class="row">
@@ -93,7 +108,7 @@
 												<input
 													type="text"
 													name="username"
-													class="form-control form-control-lg"
+													class="form-control form-control-lg form-control-file"
 												/>
 												<label
 													class="form-label"

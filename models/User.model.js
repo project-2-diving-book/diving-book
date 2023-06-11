@@ -41,13 +41,16 @@ const userSchema = new Schema(
 				"Instructor",
 			],
 		},
-
+		imgProfile: {
+			type: String,
+		},
 		DivesToDo: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: "Dive",
 			},
 		],
+		
 	},
 	{
 		// this second object adds extra properties: `createdAt` and `updatedAt`
