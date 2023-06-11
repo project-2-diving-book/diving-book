@@ -22,6 +22,25 @@ const userSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		firstName: {
+			type: String,
+			required: true,
+		},
+		lastName: {
+			type: String,
+			required: true,
+		},
+		divingLevel: {
+			type: String,
+			enum: [
+				"Begginer",
+				"Open Water Diver",
+				"Advanced Open Water Diver",
+				"Resque Diver",
+				"Divemaster",
+				"Instructor",
+			],
+		},
 
 		DivesToDo: [
 			{

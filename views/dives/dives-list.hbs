@@ -13,20 +13,37 @@
 				<p class="card-text">Some quick example text to build on the card title
 					and make up the bulk of the card's content.</p>
 
-				<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
-				<h6>{{depth}}m</h6>
-				<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-				<h6>
-					{{duration}}min</h6>
-				<i class="bi bi-file-person" style="font-size: 2rem;"></i>
-				<h6>
-					{{user.username}}</h6>
-				<a class="btn btn-primary" href="/diving-site-details/{{this._id}}">View
-					details</a>
+				<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+					<div class="feature-col">
+						<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+						<h6>{{depth}}m</h6></div>
+					<div class="feature-col">
+
+						<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+						<h6>
+							{{duration}}min</h6>
+					</div>
+					<div class="feature-col">
+						<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+						<h6>
+							{{user.username}}</h6>
+					</div>
+				</div>
+
+				<div class="row g-4 row-cols-1 row-cols-lg-2">
+					<div class="feature-col">
+						<a
+							class="btn btn-primary"
+							href="/diving-site-details/{{this._id}}"
+						>View details</a>
+					</div>
+					<div class="feature-col">
+						<form action="/diving-sites/{{this._id}}/delete" method="POST">
+							<button class="btn btn-secondary">Delete</button>
+						</form>
+					</div>
+				</div>
 			</div>
-			<form action="/diving-sites/{{this._id}}/delete" method="POST">
-				<button>Delete</button>
-			</form>
 		</div>
 
 	{{else}}
