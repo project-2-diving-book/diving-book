@@ -1,3 +1,9 @@
 
 <h3>Username: {{userIsLoggedIn.username}}</h3>
 <h3>email: {{userIsLoggedIn.email}}</h3>
+
+{{#each userDivesArr}}
+    <h4>{{this.divingSite}}</h4>
+{{else}}
+    <p>this user has no dives</p>
+{{/each}}
