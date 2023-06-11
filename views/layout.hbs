@@ -66,10 +66,14 @@
 
 					</ul>
 					<div class="d-flex" role="search">
-
-						<a href="/auth/login" class="btn btn-primary">Login</a>
-						<a href="/auth/signup" class="btn btn-outline-primary">Sign up</a>
-						<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
+						{{#if userDetails}}
+							{{userDetails.username}}
+							<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
+						{{else}}
+							<a href="/auth/login" class="btn btn-primary">Login</a>
+							<a href="/auth/signup" class="btn btn-outline-primary">Sign up</a>
+							<a href="/auth/logout" class="btn btn-outline-secondary">Logout</a>
+						{{/if}}
 					</div>
 				</div>
 			</div>
