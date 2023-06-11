@@ -9,6 +9,7 @@ const User = require("../models/User.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const isLoggedOut = require("../middleware/isLoggedOut");
 const isUserThatCreatedDive = require("../middleware/isUserThatCreatedDive");
+ 
 
 ////////
 // Routes
@@ -20,7 +21,7 @@ router.get("/diving-sites", (req, res, next) => {
 	Dive.find()
 		.populate("user")
 		.then((allDives) => {
-			res.render("dives/dives-list", { allDives });
+			res.render("dives/dives-list", { allDives, userIsLoggedIn: req.session.currentUser });
 		})
 		.catch((error) => {
 			console.log("Error on getting the list of dives", error);
@@ -36,7 +37,7 @@ router.get("/diving-site-details/:id", (req, res, next) => {
 	Dive.findById(id)
 		.populate("user")
 		.then(diveDetails => {
-			res.render("dives/diving-site-details", { diveDetails });
+			res.render("dives/diving-site-details", { diveDetails, userIsLoggedIn: req.session.currentUser });
 		})
 		.catch(error => {
 			console.log("Error finding the details for this dive", error);
@@ -47,7 +48,7 @@ router.get("/diving-site-details/:id", (req, res, next) => {
 //////////////////  CREATE Diving Site
 
 router.get("/diving-sites/create", isLoggedIn, (req, res, next) => {
-	res.render("dives/diving-sites-create");
+	res.render("dives/diving-sites-create", { userIsLoggedIn: req.session.currentUser });
 });
 
 router.post("/diving-sites/create", isLoggedIn, (req, res, next) => {
@@ -80,7 +81,7 @@ router.get("/diving-sites/:id/edit", isLoggedIn, isUserThatCreatedDive, (req, re
 
 	Dive.findById(id)
 		.then((diveFromDB) => {
-			res.render("dives/diving-site-edit", { diveFromDB });
+			res.render("dives/diving-site-edit", { diveFromDB, userIsLoggedIn: req.session.currentUser });
 		})
 		.catch((error) => {
 			console.log("this is an error on update of a dive ", error);
@@ -100,7 +101,7 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
 	)
 
 		.then(() => {
-			res.redirect("/diving-sites	");
+			res.redirect("/diving-sites");
 		})
 		.catch((error) => {
 			console.log("this is an error on update of a dive and redirect ", error);

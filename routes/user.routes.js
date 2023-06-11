@@ -9,8 +9,8 @@ router.get("/user-profile/:username", (req, res, next) => {
     const username = req.session.currentUser.username;
 
     User.findOne({username: username})
-        .then((userDetails) => {
-            res.render("users/user-profile", { userDetails })
+        .then((userIsLoggedIn) => {
+            res.render("users/user-profile", { userIsLoggedIn })
         })
         .catch((error) => {
             console.log("Error finding user in DB", error);
