@@ -1,6 +1,7 @@
 
 <h3>Username: {{userIsLoggedIn.username}}</h3>
 <h3>email: {{userIsLoggedIn.email}}</h3>
+
 <img src="{{userIsLoggedIn.imgProfile}}"></img>
 
 <div class="container w-100">
@@ -45,7 +46,14 @@
 		</div>
 		<div class="col-9">
 			<!-- Content for the second div (8 columns) -->
-      
+    
+
+				{{#each userDivesArr}}
+   			 <h4>{{this.divingSite}}</h4>
+					{{else}}
+   			 <p>this user has no dives</p>
+				 {{/each}}
+
 
 		</div>
 	</div>
