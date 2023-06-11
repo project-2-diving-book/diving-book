@@ -7,10 +7,7 @@ module.exports = (req, res, next) => {
   Dive.findById(diveId)
     .populate("user")
     .then((diveDetails) => {
-      //console.log(diveFromDB.user)
       const diveUserEmail = diveDetails.user.email;
-      //console.log(diveUserId)
-      //console.log(currentUserId)
       if (currentUserEmail === diveUserEmail) {
         next();
       } else {
