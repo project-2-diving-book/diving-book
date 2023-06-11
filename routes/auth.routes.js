@@ -29,8 +29,8 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post(
 	"/signup",
 	isLoggedOut,
-	fileUploader.single("imgProfile"),
-	(req, res) => {
+	//fileUploader.single("imgProfile"),
+	(req, res, next) => {
 		const { username, email, password, firstName, lastName, divingLevel } =
 			req.body;
 
@@ -84,7 +84,7 @@ router.post(
 					firstName,
 					lastName,
 					divingLevel,
-					imgProfile: req.file.path,
+					//imgProfile: req.file.path,
 				});
 			})
 			.then((user) => {
