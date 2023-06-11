@@ -1,4 +1,4 @@
-<div class="diving-list-container">
+<div class="card-container diving-list-container">
 	{{#each allDives}}
 
 		<div class="card card-dive">
@@ -8,16 +8,21 @@
 				alt="Fissure in Sandstone"
 			/>
 			<div class="card-body">
-				<h5 class="card-title">Diving Site:{{divingSite}}</h5>
+				<p class="uppercase text-left">Diving Site:</p>
+				<h5 class="card-title text-left">{{divingSite}}</h5>
 				<p class="card-text">Some quick example text to build on the card title
 					and make up the bulk of the card's content.</p>
-				<h6>Depth:</h6>
-				{{depth}}
-				<h6>Duration:</h6>
-				{{duration}}
-				<h6>User:</h6>
-				{{user.username}}
-				<a href="/diving-site-details/{{this._id}}">View details</a>
+
+				<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+				<h6>{{depth}}m</h6>
+				<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+				<h6>
+					{{duration}}min</h6>
+				<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+				<h6>
+					{{user.username}}</h6>
+				<a class="btn btn-primary" href="/diving-site-details/{{this._id}}">View
+					details</a>
 			</div>
 			<form action="/diving-sites/{{this._id}}/delete" method="POST">
 				<button>Delete</button>

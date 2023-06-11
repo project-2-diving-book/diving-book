@@ -25,9 +25,6 @@ illu {
 	background-size: cover;
 }
 
-.sign-up {
-	box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.5);
-}
 .diving-list-container {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -36,7 +33,4 @@ illu {
 
 .card-dive {
 	width: 80%;
-	background-color: lightgray;
-	padding: 10px;
-	text-align: center;
 }
