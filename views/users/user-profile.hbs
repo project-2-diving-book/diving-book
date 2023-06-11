@@ -1,6 +1,9 @@
 
+<h3>First name: {{userIsLoggedIn.firstName}}</h3>
+<h3>Last name: {{userIsLoggedIn.lastName}}</h3>
 <h3>Username: {{userIsLoggedIn.username}}</h3>
 <h3>email: {{userIsLoggedIn.email}}</h3>
+<h3>Diving level: {{userIsLoggedIn.divingLevel}}</h3>
 
 <img src="{{userIsLoggedIn.imgProfile}}"></img>
 
@@ -9,7 +12,7 @@
 		<div class="col-3">
 
 			<!-- Content for the first div (4 columns) -->
-
+            
 			<form method="post" action="/diving-sites/create">
 				<label>
 					Diving Site:
