@@ -1,20 +1,10 @@
 <div class="container-fluid w-100">
 	<div class="row w-100">
 		<div class="col-3 container-fluid">
-			{{!-- <div>
-				<h3>First name: {{userIsLoggedIn.firstName}}</h3>
-				<h3>Last name: {{userIsLoggedIn.lastName}}</h3>
-				<h3>Username: {{userIsLoggedIn.username}}</h3>
-					<h3>email: {{userIsLoggedIn.email}}</h3>
-					<h3>Diving level: {{userIsLoggedIn.divingLevel}}</h3>
 
-					<img src="{{userIsLoggedIn.imgProfile}}"></img>
-					</div> --}}
-			<section class="vh-100" style="background-color:white;">
-				<div class="container w-100 h-100">
-					<div
-						class="row d-flex justify-content-center align-items-center h-100"
-					>
+			<section style="background-color:white;">
+				<div class="container w-100 my-5">
+					<div class="row d-flex justify-content-center align-items-center">
 						<div class="col col-md-10 col-lg-10 col-xl-10">
 							<div
 								class="card shadow"
@@ -67,40 +57,126 @@
 			</section>
 
 			<!-- Content for the first div (4 columns) -->
-			<div class="form-containerss">
+			<div class="container-fluid shadow">
 				<form method="post" action="/diving-sites/create">
-					<label>
-						Diving Site:
-						<input type="text" name="divingSite" />
-					</label>
+					<h3>Log a Dive</h3>
 
-					<label>
-						Depth:
-						<input type="number" name="depth" min="0" />
-					</label>
+					<div class="card">
 
-					<label>
-						Duration:
-						<input type="number" name="duration" min="0" />
-					</label>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>{{duration}}min</h6>
+								</div>
 
-					<label>
-						Places to eat:
-						<input type="text" name="placesToEat" />
-					</label>
+								<div class="form-outline col">
 
-					<label>
-						Comments:
-						<textarea name="comments" cols="30" rows="6"> </textarea>
-					</label>
+									<input type="text" name="divingSite" class="form-control" />
+									<label class="form-label" for="form6Example3">Diving Site</label>
+								</div>
+							</div>
+						</div>
+					</div>
 
-					<label>
-						Buddy:
-						<input type="text" name="buddy" />
-					</label>
+					<div class="card">
 
-					<button type="submit"> Create </button>
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>{{duration}}min</h6>
+								</div>
+
+								<div class="form-outline col">
+
+									<input
+										type="number"
+										name="depth"
+										min="0"
+										class="form-control"
+									/>
+									<label class="form-label" for="form6Example3">Depth</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>{{duration}}min</h6>
+								</div>
+								<div class="form-outline col">
+									<input
+										type="number"
+										name="duration"
+										min="0"
+										class="form-control"
+									/>
+									<label class="form-label" for="form6Example3">Duration</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>{{duration}}min</h6>
+								</div>
+								<div class="form-outline col">
+									<input type="text" name="buddy" class="form-control" />
+									<label class="form-label" for="form6Example3">Buddy</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>{{duration}}min</h6>
+								</div>
+								<div class="form-outline col">
+									<textarea
+										name="comments"
+										cols="30"
+										rows="6"
+										class="form-control"
+									> </textarea>
+									<label class="form-label" for="form6Example3">Comments</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-auto">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>{{duration}}min</h6>
+								</div>
+								<div class="form-outline col">
+									<input type="text" name="placesToEat" class="form-control" />
+									<label class="form-label" for="form6Example3">Places to Eat
+										nearby</label>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<button class="btn btn-primary" type="submit"> Create </button>
+
 				</form>
+
 			</div>
 		</div>
 		<div class="col-9">
@@ -109,7 +185,7 @@
 			<div class="card-container diving-list-container">
 				{{#each userDivesArr}}
 
-					<div class="card card-dive">
+					<div class="card card-dive mx-3 my-3">
 						<img
 							src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
 							class="card-img-top"
