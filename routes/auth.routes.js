@@ -34,7 +34,7 @@ router.post(
 		const { username, email, password, firstName, lastName, divingLevel } =
 			req.body;
 
-		console.log(req.file.path);
+	
 
 		// Check that username, email, and password are provided
 		if (

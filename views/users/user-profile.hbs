@@ -1,111 +1,168 @@
+<div class="container-fluid w-100">
+	<div class="row w-100">
+		<div class="col-3 container-fluid">
+			{{!-- <div>
+				<h3>First name: {{userIsLoggedIn.firstName}}</h3>
+				<h3>Last name: {{userIsLoggedIn.lastName}}</h3>
+				<h3>Username: {{userIsLoggedIn.username}}</h3>
+					<h3>email: {{userIsLoggedIn.email}}</h3>
+					<h3>Diving level: {{userIsLoggedIn.divingLevel}}</h3>
 
-<h3>First name: {{userIsLoggedIn.firstName}}</h3>
-<h3>Last name: {{userIsLoggedIn.lastName}}</h3>
-<h3>Username: {{userIsLoggedIn.username}}</h3>
-<h3>email: {{userIsLoggedIn.email}}</h3>
-<h3>Diving level: {{userIsLoggedIn.divingLevel}}</h3>
+					<img src="{{userIsLoggedIn.imgProfile}}"></img>
+					</div> --}}
+			<section class="vh-100" style="background-color:white;">
+				<div class="container w-100 h-100">
+					<div
+						class="row d-flex justify-content-center align-items-center h-100"
+					>
+						<div class="col col-md-10 col-lg-10 col-xl-10">
+							<div
+								class="card shadow"
+								style="border-radius: 15px; background-color: white;"
+							>
+								<div class="card-body p-4 text-black">
+									<div>
+										<h6 class="mb-4">{{userIsLoggedIn.username}}</h6>
+										<div
+											class="d-flex align-items-center justify-content-between mb-3"
+										>
+											<p class="small mb-0"><i
+													class="far fa-clock me-2"
+												></i>{{userIsLoggedIn.divingLevel}}</p>
+											{{! <p class="fw-bold mb-0">Number of Dives</p> }}
+										</div>
+									</div>
+									<div class="d-flex align-items-center mb-4">
+										<div class="flex-shrink-0">
+											<img
+												src="{{userIsLoggedIn.imgProfile}}"
+												alt="Generic placeholder image"
+												class="img-fluid rounded-circle border border-dark border-3"
+												style="width: 70px;"
+											/>
+										</div>
+										<div class="flex-grow-1 ms-3">
+											<div class="d-flex flex-row align-items-center mb-2">
+												<p class="mb-0 me-2">@{{userIsLoggedIn.username}}</p>
 
-<img src="{{userIsLoggedIn.imgProfile}}"></img>
+											</div>
+											<div>
+												<p> {{userIsLoggedIn.firstName}}</p>
+												<p> {{userIsLoggedIn.lastName}}</p>
+												<p> {{userIsLoggedIn.email}}</p>
+											</div>
+										</div>
+									</div>
+									<hr />
 
-<div class="container w-100">
-	<div class="row">
-		<div class="col-3">
+									<button
+										type="button"
+										class="btn btn-secondary btn-rounded btn-block btn-lg"
+									><i class="far fa-clock me-2"></i>Edit info</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
 			<!-- Content for the first div (4 columns) -->
-            
-			<form method="post" action="/diving-sites/create">
-				<label>
-					Diving Site:
-					<input type="text" name="divingSite" />
-				</label>
+			<div class="form-containerss">
+				<form method="post" action="/diving-sites/create">
+					<label>
+						Diving Site:
+						<input type="text" name="divingSite" />
+					</label>
 
-				<label>
-					Depth:
-					<input type="number" name="depth" min="0" />
-				</label>
+					<label>
+						Depth:
+						<input type="number" name="depth" min="0" />
+					</label>
 
-				<label>
-					Duration:
-					<input type="number" name="duration" min="0" />
-				</label>
+					<label>
+						Duration:
+						<input type="number" name="duration" min="0" />
+					</label>
 
-				<label>
-					Places to eat:
-					<input type="text" name="placesToEat" />
-				</label>
+					<label>
+						Places to eat:
+						<input type="text" name="placesToEat" />
+					</label>
 
-				<label>
-					Comments:
-					<textarea name="comments" cols="30" rows="6"> </textarea>
-				</label>
+					<label>
+						Comments:
+						<textarea name="comments" cols="30" rows="6"> </textarea>
+					</label>
 
-				<label>
-					Buddy:
-					<input type="text" name="buddy" />
-				</label>
+					<label>
+						Buddy:
+						<input type="text" name="buddy" />
+					</label>
 
-				<button type="submit"> Create </button>
-			</form>
+					<button type="submit"> Create </button>
+				</form>
+			</div>
 		</div>
 		<div class="col-9">
 			<!-- Content for the second div (8 columns) -->
-    
 
-				 <div class="card-container diving-list-container">
-	{{#each userDivesArr}}
+			<div class="card-container diving-list-container">
+				{{#each userDivesArr}}
 
-		<div class="card card-dive">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
-			<div class="card-body">
-				<p class="uppercase text-left">Diving Site:</p>
-				<h5 class="card-title text-left">{{divingSite}}</h5>
-				<p class="card-text">Some quick example text to build on the card title
-					and make up the bulk of the card's content.</p>
+					<div class="card card-dive">
+						<img
+							src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+							class="card-img-top"
+							alt="Fissure in Sandstone"
+						/>
+						<div class="card-body">
+							<p class="uppercase text-left">Diving Site:</p>
+							<h5 class="card-title text-left">{{divingSite}}</h5>
+							<p class="card-text">Some quick example text to build on the card
+								title and make up the bulk of the card's content.</p>
 
-				<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
-					<div class="feature-col">
-						<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
-						<h6>{{depth}}m</h6></div>
-					<div class="feature-col">
+							<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+								<div class="feature-col">
+									<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+									<h6>{{depth}}m</h6></div>
+								<div class="feature-col">
 
-						<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-						<h6>
-							{{duration}}min</h6>
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>
+										{{duration}}min</h6>
+								</div>
+								<div class="feature-col">
+									<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+									<h6>
+										{{user.username}}</h6>
+								</div>
+							</div>
+
+							<div class="row g-4 row-cols-1 row-cols-lg-2">
+								<div class="feature-col">
+									<a
+										class="btn btn-primary"
+										href="/diving-site-details/{{this._id}}"
+									>View details</a>
+								</div>
+								<div class="feature-col">
+									<form
+										action="/diving-sites/{{this._id}}/delete"
+										method="POST"
+									>
+										<button class="btn btn-secondary">Delete</button>
+									</form>
+								</div>
+							</div>
+						</div>
 					</div>
-					<div class="feature-col">
-						<i class="bi bi-file-person" style="font-size: 2rem;"></i>
-						<h6>
-							{{user.username}}</h6>
-					</div>
-				</div>
 
-				<div class="row g-4 row-cols-1 row-cols-lg-2">
-					<div class="feature-col">
-						<a
-							class="btn btn-primary"
-							href="/diving-site-details/{{this._id}}"
-						>View details</a>
-					</div>
-					<div class="feature-col">
-						<form action="/diving-sites/{{this._id}}/delete" method="POST">
-							<button class="btn btn-secondary">Delete</button>
-						</form>
-					</div>
-				</div>
+				{{else}}
+					<p>There are not diving sites yes</p>
+					<a href="/diving-sites/create">Log your first one</a>
+
+				{{/each}}
 			</div>
-		</div>
-
-	{{else}}
-		<p>There are not diving sites yes</p>
-		<a href="/diving-sites/create">Log your first one</a>
-
-	{{/each}}
-</div>
-
 
 		</div>
 	</div>
