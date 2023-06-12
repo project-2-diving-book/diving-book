@@ -66,7 +66,7 @@ router.post("/diving-sites/create", isLoggedIn, (req, res, next) => {
 
 	Dive.create(newDive)
 		.then(() => {
-			res.redirect("/diving-sites");
+			res.redirect("/user-profile/:username");
 		})
 		.catch((error) => {
 			console.log("Error on creating a dive", error);
@@ -101,7 +101,7 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
 	)
 
 		.then(() => {
-			res.redirect("/diving-sites");
+			res.redirect("/user-profile/:username");
 		})
 		.catch((error) => {
 			console.log("this is an error on update of a dive and redirect ", error);
@@ -116,7 +116,7 @@ router.post("/diving-sites/:id/delete", isLoggedIn, isUserThatCreatedDive, (req,
 
 	Dive.findByIdAndDelete(id)
 		.then(() => {
-			res.redirect("/diving-sites");
+			res.redirect("/user-profile/:username");
 		})
 		.catch((error) => {
 			console.log("Error deleting this dive", error);
