@@ -33,4 +33,9 @@
 {{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>
 {{/if}}
+
+{{!-- {{#if userIsLoggedIn.email === diveDetails.user.email}} --}}
+<a href="/user-profile/{{diveDetails.user.username}}">Back to user profile</a> <br />
+{{!-- {{else}} --}}
 <a href="/diving-sites">Back to dives list</a>
+{{!-- {{/if}} --}}

@@ -5,6 +5,7 @@ const router = express.Router();
 
 const Dive = require("../models/Dive.model");
 const User = require("../models/User.model");
+const isLoggedIn = require("../middleware/isLoggedIn");
 
 router.get("/user-profile/:username", (req, res, next) => {
 	const username = req.session.currentUser.username;
@@ -27,6 +28,19 @@ router.get("/user-profile/:username", (req, res, next) => {
 		})
 		.catch((error) => {
 			console.log("Error finding user in DB", error);
+			next(error);
+		});
+});
+
+router.get("/user/:userId/edit", isLoggedIn, (req, res, next) => {
+	const { userId } = req.params;
+
+	User.findById(userId)
+		.then((userDetails) => {
+			res.render("users/user-details-edit", {userDetails})
+		})
+		.catch((error) => {
+			console.log("Error finding user in the DB", error);
 			next(error);
 		});
 });
