@@ -22,6 +22,10 @@ const diveSchema = new Schema(
 			type: String,
 		},
 		//image
+		imgDive: {
+			type: String,
+		},
+
 		placesToEat: {
 			type: String,
 		},

@@ -1,7 +1,11 @@
 <div class="container d-flex">
 	<div class="row col-6">
 
-		<form method="post" action="/diving-sites/create">
+		<form
+			method="post"
+			action="/diving-sites/create"
+			enctype="multipart/form-data"
+		>
 			<h3>Log a Dive</h3>
 
 			<div class="card feature-col-4">
@@ -101,6 +105,33 @@
 				</div>
 			</div>
 
+			{{! image container---------------------------------------- }}
+			<div class="card-body">
+				<div class="row">
+					<div class="col-auto">
+						<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+					</div>
+					<div class="form-outline col">
+						<div class="col-auto">
+							<img
+								id="image-preview"
+								src=""
+								style="width: 6rem; height: 6rem;"
+							/>
+						</div>
+						<input
+							type="file"
+							name="imgDive"
+							onchange="previewImage(event)"
+							class="form-control form-control-lg"
+						/>
+						<label class="form-label" for="form6Example3">Image </label>
+					</div>
+				</div>
+			</div>
+
+			{{! imageeeee ----------------------------}}
+
 			<button class="btn btn-primary" type="submit"> Create </button>
 
 		</form>
@@ -110,3 +141,12 @@
 		<img src="/images/medusa.png" alt="woman diving with medusas" />
 	</div>
 </div>
+
+{{! image changes }}
+
+<script>
+	function previewImage(event) { const imagePreview =
+	document.getElementById("image-preview"); const file = event.target.files[0];
+	const reader = new FileReader(); reader.onload = function(e) {
+	imagePreview.src = e.target.result; }; reader.readAsDataURL(file); }
+</script>
