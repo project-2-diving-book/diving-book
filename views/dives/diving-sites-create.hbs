@@ -1,35 +1,152 @@
-<h2>Log a Dive</h2>
+<div class="container d-flex">
+	<div class="row col-6">
 
-<form method="post" action="/diving-sites/create">
-	<label>
-		Diving Site:
-		<input type="text" name="divingSite" />
-	</label>
+		<form
+			method="post"
+			action="/diving-sites/create"
+			enctype="multipart/form-data"
+		>
+			<h3>Log a Dive</h3>
 
-	<label>
-		Depth:
-		<input type="number" name="depth" min="0" />
-	</label>
+			<div class="card feature-col-4">
 
-	<label>
-		Duration:
-		<input type="number" name="duration" min="0" />
-	</label>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+						</div>
+						<div class="form-outline col">
+							<input type="text" name="divingSite" class="form-control" />
+							<label class="form-label" for="form6Example3">Diving Site</label>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	<label>
-		Places to eat:
-		<input type="text" name="placesToEat" />
-	</label>
+			<div class="card">
 
-	<label>
-		Comments:
-		<textarea name="comments" cols="30" rows="6"> </textarea>
-	</label>
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
 
-	<label>
-		Buddy:
-		<input type="text" name="buddy" />
-	</label>
+						</div>
+						<div class="form-outline col">
+							<input type="number" name="depth" min="0" class="form-control" />
+							<label class="form-label" for="form6Example3">Depth</label>
+						</div>
+					</div>
+				</div>
+			</div>
 
-	<button type="submit"> Create </button>
-</form>
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+							<h6>{{duration}}min</h6>
+						</div>
+						<div class="form-outline col">
+							<input
+								type="number"
+								name="duration"
+								min="0"
+								class="form-control"
+							/>
+							<label class="form-label" for="form6Example3">Duration</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<input type="text" name="buddy" class="form-control" />
+							<label class="form-label" for="form6Example3">Buddy</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-chat-left-text" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<textarea name="comments" cols="30" rows="6" class="form-control">
+							</textarea>
+							<label class="form-label" for="form6Example3">Comments</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-apple" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<input type="text" name="placesToEat" class="form-control" />
+							<label class="form-label" for="form6Example3">Places to Eat nearby</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{! image container---------------------------------------- }}
+			<div class="card-body">
+				<div class="row">
+					<div class="col-auto">
+						<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+					</div>
+					<div class="form-outline col">
+						<div class="col-auto">
+							<img
+								id="image-preview"
+								src=""
+								style="width: 6rem; height: 6rem;"
+							/>
+						</div>
+						<input
+							type="file"
+							name="imgDive"
+							onchange="previewImage(event)"
+							class="form-control form-control-lg"
+						/>
+						<label class="form-label" for="form6Example3">Image </label>
+					</div>
+				</div>
+			</div>
+
+			{{! imageeeee ----------------------------}}
+
+			<button class="btn btn-primary" type="submit"> Create </button>
+
+		</form>
+
+	</div>
+	<div class="my-5">
+		<img src="/images/medusa.png" alt="woman diving with medusas" />
+	</div>
+</div>
+
+{{! image changes }}
+
+<script>
+	function previewImage(event) { const imagePreview =
+	document.getElementById("image-preview"); const file = event.target.files[0];
+	const reader = new FileReader(); reader.onload = function(e) {
+	imagePreview.src = e.target.result; }; reader.readAsDataURL(file); }
+</script>
