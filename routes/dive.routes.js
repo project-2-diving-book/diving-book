@@ -99,9 +99,9 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
 		{ divingSite, depth, duration, buddy, comments, placesToEat },
 		{ new: true }
 	)
-
-		.then(() => {
-			res.redirect("/user-profile/:username");
+		.populate("user")
+		.then((diveUpdated) => {
+			res.redirect(`/user-profile/${diveUpdated.user.username}`);
 		})
 		.catch((error) => {
 			console.log("this is an error on update of a dive and redirect ", error);
