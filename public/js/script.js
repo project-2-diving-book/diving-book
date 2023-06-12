@@ -9,4 +9,5 @@ const dropdown = document.getElementsByClassName("dropdown-togglerrr");
 
 document.addEventListener("click", () => {
 	// Step 1: Retrieve the parent element
+	np;
 });

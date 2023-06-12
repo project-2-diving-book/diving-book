@@ -34,3 +34,7 @@ illu {
 .card-dive {
 	width: 80%;
 }
+
+#dropdown-menu {
+	left: -100;
+}
