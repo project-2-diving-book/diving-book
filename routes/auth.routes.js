@@ -29,10 +29,12 @@ router.get("/signup", isLoggedOut, (req, res) => {
 router.post(
 	"/signup",
 	isLoggedOut,
-	//fileUploader.single("imgProfile"),
+	fileUploader.single("imgProfile"), /////////////////////////////////
 	(req, res, next) => {
 		const { username, email, password, firstName, lastName, divingLevel } =
 			req.body;
+
+		console.log(req.file.path);
 
 		// Check that username, email, and password are provided
 		if (
@@ -84,7 +86,7 @@ router.post(
 					firstName,
 					lastName,
 					divingLevel,
-					//imgProfile: req.file.path,
+					imgProfile: req.file.path, ///////////////////////////
 				});
 			})
 			.then((user) => {
