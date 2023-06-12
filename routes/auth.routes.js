@@ -34,8 +34,6 @@ router.post(
 		const { username, email, password, firstName, lastName, divingLevel } =
 			req.body;
 
-	
-
 		// Check that username, email, and password are provided
 		if (
 			username === "" ||
