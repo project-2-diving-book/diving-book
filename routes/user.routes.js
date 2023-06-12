@@ -7,7 +7,7 @@ const Dive = require("../models/Dive.model");
 const User = require("../models/User.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-router.get("/user-profile/:username", (req, res, next) => {
+router.get("/user-profile/:username", isLoggedIn, (req, res, next) => {
 	const username = req.session.currentUser.username;
 	let userIsLoggedIn = null;
 	let userDivesArr = [];
@@ -37,10 +37,25 @@ router.get("/user/:userId/edit", isLoggedIn, (req, res, next) => {
 
 	User.findById(userId)
 		.then((userDetails) => {
-			res.render("users/user-details-edit", {userDetails})
+			console.log(userDetails)
+			res.render("users/user-details-edit", { userDetails, userIsLoggedIn: req.session.currentUser })
 		})
 		.catch((error) => {
 			console.log("Error finding user in the DB", error);
+			next(error);
+		});
+});
+
+router.post("/user/:userId/edit", isLoggedIn, (req, res, next) => {
+	const { userId } = req.params;
+	const { firstName, lastName, email, divingLevel, username } = req.body;
+
+	User.findByIdAndUpdate(userId, { firstName, lastName, email, divingLevel, username }, {new: true})
+		.then((userInfoUpdated) => {
+			res.render("users/user-details-edit", {userInfoUpdated})
+		})
+		.catch((error) => {
+			console.log("this is an error on update user information", error);
 			next(error);
 		});
 });
