@@ -21,7 +21,15 @@
 <p>{{diveDetails.user.username}}</p>
 
 <hr />
-<a href="/diving-sites/{{diveDetails._id}}/edit">edit</a> <br /> <br />
+<form action="/diving-sites/{{diveDetails._id}}/edit" method="GET">
+  <button class="btn btn-secondary">Edit</button>
+</form>
+<form action="/diving-sites/{{diveDetails._id}}/delete" method="POST">
+  <button class="btn btn-secondary">Delete</button>
+</form>
+{{!-- <a href="/diving-sites/{{diveDetails._id}}/edit">edit</a> --}}
+<br />
+<br />
 {{#if errorMessage}}
   <p class="error">{{errorMessage}}</p>
 {{/if}}

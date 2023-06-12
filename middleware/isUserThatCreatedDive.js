@@ -15,6 +15,7 @@ module.exports = (req, res, next) => {
           .status(400)
           .render("dives/diving-site-details", {
             diveDetails,
+            userIsLoggedIn: req.session.currentUser,
             errorMessage: "Only the user that created this dive can modify it",
           });
       }
