@@ -12,30 +12,58 @@ const isUserTheSame = require("../middleware/isUserTheSame");
 router.get(
 	"/user-profile/:username",
 	isLoggedIn,
-	isUserTheSame,
+
 	(req, res, next) => {
 		const username = req.session.currentUser.username;
-		let userIsLoggedIn = null;
+		const diveOwner = req.params.username;
+		let userIsLoggedIn = req.session.currentUser;
+		let diveOwnerDetails = null;
 		let userDivesArr = [];
+		if (username === diveOwner) {
+			User.findOne({ username: username })
 
-		User.findOne({ username: username })
-
-			.then((userDBIsLoggedIn) => {
-				userIsLoggedIn = userDBIsLoggedIn;
-				return Dive.find().populate("user");
-			})
-			.then((allDives) => {
-				allDives.forEach((dive) => {
-					if (dive.user.username === username) {
-						userDivesArr.push(dive);
-					}
+				.then((userDBIsLoggedIn) => {
+					console.log(req.session.currentUser, "current user");
+					console.log(userDBIsLoggedIn, "user from DB");
+					userIsLoggedIn = userDBIsLoggedIn;
+					return Dive.find().populate("user");
+				})
+				.then((allDives) => {
+					allDives.forEach((dive) => {
+						if (dive.user.username === username) {
+							userDivesArr.push(dive);
+						}
+					});
+					res.render("users/user-profile", { userDivesArr, userIsLoggedIn });
+				})
+				.catch((error) => {
+					console.log("Error finding user in DB", error);
+					next(error);
 				});
-				res.render("users/user-profile", { userDivesArr, userIsLoggedIn });
-			})
-			.catch((error) => {
-				console.log("Error finding user in DB", error);
-				next(error);
-			});
+		} else {
+			User.findOne({ username: diveOwner })
+				.then((userDB) => {
+					diveOwnerDetails = userDB;
+
+					return Dive.find().populate("user");
+				})
+				.then((allDives) => {
+					allDives.forEach((dive) => {
+						if (dive.user.username === diveOwner) {
+							userDivesArr.push(dive);
+						}
+					});
+					res.render("users/user-profile", {
+						userDivesArr,
+						userIsLoggedIn,
+						diveOwnerDetails,
+					});
+				})
+				.catch((error) => {
+					console.log("Error finding user in DB", error);
+					next(error);
+				});
+		}
 	}
 );
 

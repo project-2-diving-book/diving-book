@@ -12,43 +12,80 @@
 							>
 								<div class="card-body p-4 text-black">
 									<div>
-										<h6 class="mb-4">{{userIsLoggedIn.username}}</h6>
+										{{#if diveOwnerDetails}}
+											<h6 class="mb-4">{{diveOwnerDetails.username}}</h6>
+										{{else}}
+											<h6 class="mb-4">{{userIsLoggedIn.username}}</h6>
+										{{/if}}
 										<div
 											class="d-flex align-items-center justify-content-between mb-3"
 										>
-											<p class="small mb-0"><i
-													class="far fa-clock me-2"
-												></i>{{userIsLoggedIn.divingLevel}}</p>
+											{{#if diveOwnerDetails}}
+
+												<p class="small mb-0">
+													<i
+														class="far fa-clock me-2"
+													></i>{{diveOwnerDetails.divingLevel}}</p>
+											{{else}}
+
+												<p class="small mb-0">
+													<i
+														class="far fa-clock me-2"
+													></i>{{userIsLoggedIn.divingLevel}}</p>
+											{{/if}}
 											{{! <p class="fw-bold mb-0">Number of Dives</p> }}
 										</div>
 									</div>
 									<div class="d-flex align-items-center mb-4">
+
 										<div class="flex-shrink-0">
-											<img
-												src="{{userIsLoggedIn.imgProfile}}"
-												alt="Generic placeholder image"
-												class="img-fluid rounded-circle border border-dark border-3"
-												style="width: 70px;"
-											/>
+
+											{{#if diveOwnerDetails}}
+												<img
+													src="{{diveOwnerDetails.imgProfile}}"
+													alt="Generic placeholder image"
+													class="img-fluid rounded-circle border border-dark border-3"
+													style="width: 70px;"
+												/>
+											{{else}}
+												<img
+													src="{{userIsLoggedIn.imgProfile}}"
+													alt="Generic placeholder image"
+													class="img-fluid rounded-circle border border-dark border-3"
+													style="width: 70px;"
+												/>
+											{{/if}}
 										</div>
 										<div class="flex-grow-1 ms-3">
 											<div class="d-flex flex-row align-items-center mb-2">
-												<p class="mb-0 me-2">@{{userIsLoggedIn.username}}</p>
-
+												{{#if diveOwnerDetails}}
+													<p
+														class="mb-0 me-2"
+													>@{{diveOwnerDetails.username}}</p>
+												{{else}}
+													<p class="mb-0 me-2">@{{userIsLoggedIn.username}}</p>
+												{{/if}}
 											</div>
 											<div>
-												<p> {{userIsLoggedIn.firstName}}</p>
-												<p> {{userIsLoggedIn.lastName}}</p>
-												<p> {{userIsLoggedIn.email}}</p>
+												{{#if diveOwnerDetails}}
+													<p> {{diveOwnerDetails.firstName}}</p>
+													<p> {{diveOwnerDetails.lastName}}</p>
+													<p> {{diveOwnerDetails.email}}</p>
+												{{else}}
+													<p> {{userIsLoggedIn.firstName}}</p>
+													<p> {{userIsLoggedIn.lastName}}</p>
+													<p> {{userIsLoggedIn.email}}</p>
+												{{/if}}
 											</div>
 										</div>
 									</div>
 									<hr />
-
-									<a
-										href="/user/{{userIsLoggedIn.username}}/edit"
-										class="btn btn-secondary btn-rounded btn-block btn-lg"
-									>Edit info</a>
+									{{#unless diveOwnerDetails}}
+										<a
+											href="/user/{{userIsLoggedIn.username}}/edit"
+											class="btn btn-secondary btn-rounded btn-block btn-lg"
+										>Edit info</a>
+									{{/unless}}
 								</div>
 							</div>
 						</div>
@@ -56,123 +93,141 @@
 				</div>
 			</section>
 
-			<!-- Content for the first div (4 columns) -->
-			<div class="container-fluid shadow">
-				<form method="post" action="/diving-sites/create">
-					<h3>Log a Dive</h3>
+			{{#unless diveOwnerDetails}}
+				<!-- Content for the first div (4 columns) -->
+				<div class="container-fluid shadow">
+					<form method="post" action="/diving-sites/create">
+						<h3>Log a Dive</h3>
 
-					<div class="card">
+						<div class="card">
 
-						<div class="card-body">
-							<div class="row">
-								<div class="col-auto">
-									<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
-								</div>
-								<div class="form-outline col">
-									<input type="text" name="divingSite" class="form-control" />
-									<label class="form-label" for="form6Example3">Diving Site</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="card">
-
-						<div class="card-body">
-							<div class="row">
-								<div class="col-auto">
-									<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
-
-								</div>
-								<div class="form-outline col">
-									<input
-										type="number"
-										name="depth"
-										min="0"
-										class="form-control"
-									/>
-									<label class="form-label" for="form6Example3">Depth</label>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+									</div>
+									<div class="form-outline col">
+										<input type="text" name="divingSite" class="form-control" />
+										<label class="form-label" for="form6Example3">Diving Site</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-auto">
-									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-									<h6>{{duration}}min</h6>
-								</div>
-								<div class="form-outline col">
-									<input
-										type="number"
-										name="duration"
-										min="0"
-										class="form-control"
-									/>
-									<label class="form-label" for="form6Example3">Duration</label>
-								</div>
-							</div>
-						</div>
-					</div>
+						<div class="card">
 
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-auto">
-									<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i
+											class="bi bi-arrow-bar-down"
+											style="font-size: 2rem;"
+										></i>
 
-								</div>
-								<div class="form-outline col">
-									<input type="text" name="buddy" class="form-control" />
-									<label class="form-label" for="form6Example3">Buddy</label>
+									</div>
+									<div class="form-outline col">
+										<input
+											type="number"
+											name="depth"
+											min="0"
+											class="form-control"
+										/>
+										<label class="form-label" for="form6Example3">Depth</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-auto">
-									<i class="bi bi-chat-left-text" style="font-size: 2rem;"></i>
-
-								</div>
-								<div class="form-outline col">
-									<textarea
-										name="comments"
-										cols="30"
-										rows="6"
-										class="form-control"
-									> </textarea>
-									<label class="form-label" for="form6Example3">Comments</label>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-auto">
-									<i class="bi bi-apple" style="font-size: 2rem;"></i>
-
-								</div>
-								<div class="form-outline col">
-									<input type="text" name="placesToEat" class="form-control" />
-									<label class="form-label" for="form6Example3">Places to Eat
-										nearby</label>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+										<h6>{{duration}}min</h6>
+									</div>
+									<div class="form-outline col">
+										<input
+											type="number"
+											name="duration"
+											min="0"
+											class="form-control"
+										/>
+										<label
+											class="form-label"
+											for="form6Example3"
+										>Duration</label>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 
-					<button class="btn btn-primary" type="submit"> Create </button>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-file-person" style="font-size: 2rem;"></i>
 
-				</form>
+									</div>
+									<div class="form-outline col">
+										<input type="text" name="buddy" class="form-control" />
+										<label class="form-label" for="form6Example3">Buddy</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-			</div>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i
+											class="bi bi-chat-left-text"
+											style="font-size: 2rem;"
+										></i>
+
+									</div>
+									<div class="form-outline col">
+										<textarea
+											name="comments"
+											cols="30"
+											rows="6"
+											class="form-control"
+										> </textarea>
+										<label
+											class="form-label"
+											for="form6Example3"
+										>Comments</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-apple" style="font-size: 2rem;"></i>
+
+									</div>
+									<div class="form-outline col">
+										<input
+											type="text"
+											name="placesToEat"
+											class="form-control"
+										/>
+										<label class="form-label" for="form6Example3">Places to Eat
+											nearby</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<button class="btn btn-primary" type="submit"> Create </button>
+
+					</form>
+
+				</div>
+			{{/unless}}
 		</div>
 		<div class="col-9">
 			<!-- Content for the second div (8 columns) -->
@@ -181,6 +236,7 @@
 				{{#each userDivesArr}}
 
 					<div class="card card-dive mx-3 my-3">
+
 						<img
 							src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
 							class="card-img-top"
