@@ -83,9 +83,6 @@ router.get("/:username/edit", isLoggedIn, (req, res, next) => {
 
 router.post("/:username/edit", isLoggedIn, (req, res, next) => {
 	const userName = req.params.username;
-	//console.log(req.params)
-	//console.log(typeof userName)
-	//console.log(req.body)
 	const { firstName, lastName, email, divingLevel, username } = req.body;
 
 	User.findOneAndUpdate(
