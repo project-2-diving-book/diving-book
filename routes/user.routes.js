@@ -53,20 +53,21 @@ router.get("/user/:username/edit", isLoggedIn, (req, res, next) => {
 			console.log("Error finding user in the DB", error);
 			next(error);
 		});
+});
 router.get("/:username/edit", isLoggedIn, (req, res, next) => {
-  const { username } = req.params;	
-  console.log(req.params)
-  User.findOne({ username: username })
-    .then((userDetails) => {
-      res.render("users/user-details-edit", {
-        userDetails,
-        userIsLoggedIn: req.session.currentUser,
-      });
-    })
-    .catch((error) => {
-      console.log("Error finding user in the DB", error);
-      next(error);
-    });
+	const { username } = req.params;
+	console.log(req.params);
+	User.findOne({ username: username })
+		.then((userDetails) => {
+			res.render("users/user-details-edit", {
+				userDetails,
+				userIsLoggedIn: req.session.currentUser,
+			});
+		})
+		.catch((error) => {
+			console.log("Error finding user in the DB", error);
+			next(error);
+		});
 });
 
 router.post("/user/:username/edit", isLoggedIn, (req, res, next) => {
