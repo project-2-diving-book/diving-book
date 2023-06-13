@@ -8,7 +8,6 @@ const User = require("../models/User.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
 
-
 router.get(
 	"/user-profile/:username",
 	isLoggedIn,
@@ -67,21 +66,21 @@ router.get(
 	}
 );
 
-router.get("/user/:username/edit", isLoggedIn, (req, res, next) => {
-	const { username } = req.params;
+// router.get("/user/:username/edit", isLoggedIn, (req, res, next) => {
+// 	const { username } = req.params;
 
-	User.findOne({ username: username })
-		.then((userDetails) => {
-			res.render("users/user-details-edit", {
-				userDetails,
-				userIsLoggedIn: req.session.currentUser,
-			});
-		})
-		.catch((error) => {
-			console.log("Error finding user in the DB", error);
-			next(error);
-		});
-});
+// 	User.findOne({ username: username })
+// 		.then((userDetails) => {
+// 			res.render("users/user-details-edit", {
+// 				userDetails,
+// 				userIsLoggedIn: req.session.currentUser,
+// 			});
+// 		})
+// 		.catch((error) => {
+// 			console.log("Error finding user in the DB", error);
+// 			next(error);
+// 		});
+// });
 router.get("/:username/edit", isLoggedIn, (req, res, next) => {
 	const { username } = req.params;
 	console.log(req.params);
@@ -98,7 +97,7 @@ router.get("/:username/edit", isLoggedIn, (req, res, next) => {
 		});
 });
 
-router.post("/user/:username/edit", isLoggedIn, (req, res, next) => {
+router.post("/:username/edit", isLoggedIn, (req, res, next) => {
 	const userName = req.params.username;
 	//console.log(req.params)
 	//console.log(typeof userName)
