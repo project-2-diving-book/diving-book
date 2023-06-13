@@ -80,7 +80,7 @@ router.post(
 
 		Dive.create(newDive)
 			.then(() => {
-				res.redirect("/user-profile/:username");
+				res.redirect(`/user/user-profile/${req.session.currentUser.username}`);
 			})
 			.catch((error) => {
 				console.log("Error on creating a dive", error);

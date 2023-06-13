@@ -96,10 +96,15 @@
 			{{#unless diveOwnerDetails}}
 				<!-- Content for the first div (4 columns) -->
 				<div class="container-fluid shadow">
-					<form method="post" action="/diving-sites/create">
+
+					<form
+						method="post"
+						action="/diving-sites/create"
+						enctype="multipart/form-data"
+					>
 						<h3>Log a Dive</h3>
 
-						<div class="card">
+						<div class="card feature-col-4">
 
 							<div class="card-body">
 								<div class="row">
@@ -143,7 +148,7 @@
 								<div class="row">
 									<div class="col-auto">
 										<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-										<h6>{{duration}}min</h6>
+										<h6>min</h6>
 									</div>
 									<div class="form-outline col">
 										<input
@@ -192,7 +197,8 @@
 											cols="30"
 											rows="6"
 											class="form-control"
-										> </textarea>
+										>
+										</textarea>
 										<label
 											class="form-label"
 											for="form6Example3"
@@ -221,6 +227,35 @@
 								</div>
 							</div>
 						</div>
+
+						{{! image container---------------------------------------- }}
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-image" style="font-size: 2rem;"></i>
+									</div>
+									<div class="form-outline col">
+										<div class="col-auto">
+											<img
+												id="image-preview"
+												src=""
+												style="width: auto; height: 8rem; display:none;"
+											/>
+										</div>
+										<input
+											type="file"
+											name="imgDive"
+											onchange="previewImage(event)"
+											class="form-control form-control-lg"
+										/>
+										<label class="form-label" for="form6Example3">Image </label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{! imageeeee ------------}}
 
 						<button class="btn btn-primary" type="submit"> Create </button>
 
@@ -262,7 +297,17 @@
 										{{duration}}min</h6>
 								</div>
 								<div class="feature-col">
-									<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+									<div class="flex-shrink-0 justify-content-center">
+
+										<img
+											src="{{user.imgProfile}}"
+											alt="Generic placeholder image"
+											class="img-fluid rounded-circle border border-dark border-3"
+											style="width: 50px;"
+										/>
+
+									</div>
+
 									<h6>
 										{{user.username}}</h6>
 								</div>
