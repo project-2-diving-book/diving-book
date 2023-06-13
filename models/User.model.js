@@ -44,7 +44,7 @@ const userSchema = new Schema(
 		imgProfile: {
 			type: String,
 		},
-		DivesToDo: [
+		divesToDo: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: "Dive",
