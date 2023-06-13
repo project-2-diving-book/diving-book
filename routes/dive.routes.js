@@ -124,7 +124,7 @@ router.post("/diving-sites/:id/edit", isLoggedIn, (req, res, next) => {
   )
     .populate("user")
     .then((diveUpdated) => {
-      res.redirect(`/user-profile/${diveUpdated.user.username}`);
+      res.redirect(`/user/user-profile/${diveUpdated.user.username}`);
     })
     .catch((error) => {
       console.log("this is an error on update of a dive and redirect ", error);
@@ -143,7 +143,7 @@ router.post(
 
     Dive.findByIdAndDelete(id)
       .then(() => {
-        res.redirect("/user-profile/:username");
+        res.redirect(`/user/user-profile/${req.session.currentUser.username}`);
       })
       .catch((error) => {
         console.log("Error deleting this dive", error);
