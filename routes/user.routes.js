@@ -7,7 +7,7 @@ const Dive = require("../models/Dive.model");
 const User = require("../models/User.model");
 
 const isLoggedIn = require("../middleware/isLoggedIn");
-const isUserTheSame = require("../middleware/isUserTheSame");
+
 
 router.get(
 	"/user-profile/:username",
