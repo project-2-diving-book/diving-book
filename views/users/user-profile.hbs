@@ -44,11 +44,12 @@
 										</div>
 									</div>
 									<hr />
-
-									<a
-										href="/user/{{userIsLoggedIn.username}}/edit"
-										class="btn btn-secondary btn-rounded btn-block btn-lg"
-									>Edit info</a>
+									{{#if profileUser}}
+										<a
+											href="/user/{{userIsLoggedIn.username}}/edit"
+											class="btn btn-secondary btn-rounded btn-block btn-lg"
+										>Edit info</a>
+									{{/if}}
 								</div>
 							</div>
 						</div>

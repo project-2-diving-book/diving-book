@@ -2,11 +2,15 @@
 	{{#each allDives}}
 
 		<div class="card card-dive">
-			<img
-				src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-				class="card-img-top"
-				alt="Fissure in Sandstone"
-			/>
+			{{#if imgDive}}
+				<img src="{{imgDive}}" class="card-img-top" alt="" />
+			{{else}}
+				<img
+					src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+					class="card-img-top"
+					alt="Fissure in Sandstone"
+				/>
+			{{/if}}
 			<div class="card-body">
 				<p class="uppercase text-left">Diving Site:</p>
 				<h5 class="card-title text-left">{{divingSite}}</h5>
@@ -25,8 +29,8 @@
 					</div>
 					<div class="feature-col">
 						<i class="bi bi-file-person" style="font-size: 2rem;"></i>
-						<h6>
-							{{user.username}}</h6>
+						<a href="/user/user-profile/{{user.username}}">
+							{{user.username}}</a>
 					</div>
 				</div>
 
