@@ -22,8 +22,6 @@ router.get(
 			User.findOne({ username: username })
 
 				.then((userDBIsLoggedIn) => {
-					console.log(req.session.currentUser, "current user");
-					console.log(userDBIsLoggedIn, "user from DB");
 					userIsLoggedIn = userDBIsLoggedIn;
 					return Dive.find().populate("user");
 				})
@@ -66,21 +64,6 @@ router.get(
 	}
 );
 
-// router.get("/user/:username/edit", isLoggedIn, (req, res, next) => {
-// 	const { username } = req.params;
-
-// 	User.findOne({ username: username })
-// 		.then((userDetails) => {
-// 			res.render("users/user-details-edit", {
-// 				userDetails,
-// 				userIsLoggedIn: req.session.currentUser,
-// 			});
-// 		})
-// 		.catch((error) => {
-// 			console.log("Error finding user in the DB", error);
-// 			next(error);
-// 		});
-// });
 router.get("/:username/edit", isLoggedIn, (req, res, next) => {
 	const { username } = req.params;
 	console.log(req.params);
@@ -99,9 +82,6 @@ router.get("/:username/edit", isLoggedIn, (req, res, next) => {
 
 router.post("/:username/edit", isLoggedIn, (req, res, next) => {
 	const userName = req.params.username;
-	//console.log(req.params)
-	//console.log(typeof userName)
-	//console.log(req.body)
 	const { firstName, lastName, email, divingLevel, username } = req.body;
 
 	User.findOneAndUpdate(
@@ -110,7 +90,6 @@ router.post("/:username/edit", isLoggedIn, (req, res, next) => {
 		{ new: true }
 	)
 		.then((userInfoUpdated) => {
-			console.log(userInfoUpdated);
 			res.redirect(`/user-profile/${userInfoUpdated.username}`);
 		})
 		.catch((error) => {
