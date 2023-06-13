@@ -34,9 +34,9 @@ router.get("/user-profile/:username", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.get("/user/:username/edit", isLoggedIn, (req, res, next) => {
+router.get("/:username/edit", isLoggedIn, (req, res, next) => {
   const { username } = req.params;	
-  
+  console.log(req.params)
   User.findOne({ username: username })
     .then((userDetails) => {
       res.render("users/user-details-edit", {
@@ -50,21 +50,21 @@ router.get("/user/:username/edit", isLoggedIn, (req, res, next) => {
     });
 });
 
-router.post("/user/:username/edit", isLoggedIn, (req, res, next) => {
+router.post("/:username/edit", isLoggedIn, (req, res, next) => {
   const userName = req.params.username;
-  //console.log(req.params)
+  console.log(req.params)
   //console.log(typeof userName)
-  //console.log(req.body)
-  const { firstName, lastName, email, divingLevel, username } = req.body;
+  console.log(req.body)
+  const { firstName, lastName, divingLevel, imgProfile } = req.body;
 	
   User.findOneAndUpdate(
     { username: userName },
-    { firstName, lastName, email, divingLevel, username },
+    { firstName, lastName, divingLevel, imgProfile },
     { new: true }
   )
     .then((userInfoUpdated) => {
-      console.log(userInfoUpdated);
-      res.redirect(`/user-profile/${userInfoUpdated.username}`);
+      //console.log(userInfoUpdated);
+      res.redirect(`/user/user-profile/${userInfoUpdated.username}`);
     })
     .catch((error) => {
       console.log("this is an error on update user information", error);
