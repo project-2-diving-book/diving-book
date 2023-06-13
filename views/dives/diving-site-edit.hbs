@@ -1,44 +1,230 @@
-<form method="post" action="/diving-sites/{{diveFromDB._id}}/edit">
-  <label>
-    Diving Site:
-    <input type="text" name="divingSite" value="{{diveFromDB.divingSite}}" />
-  </label>
+{{!-- <form method="post" action="/diving-sites/{{diveFromDB._id}}/edit">
+	<label>
+		Diving Site:
+		<input type="text" name="divingSite" value="{{diveFromDB.divingSite}}" />
+	</label>
 
-  <label>
-    Depth:
-    <input type="number" name="depth" min="0" value="{{diveFromDB.depth}}" />
-  </label>
+	<label>
+		Depth:
+		<input type="number" name="depth" min="0" value="{{diveFromDB.depth}}" />
+	</label>
 
-  <label>
-    Duration:
-    <input
-      type="number"
-      name="duration"
-      min="0"
-      value="{{diveFromDB.duration}}"
-    />
-  </label>
+	<label>
+		Duration:
+		<input
+			type="number"
+			name="duration"
+			min="0"
+			value="{{diveFromDB.duration}}"
+		/>
+	</label>
 
-  <label>
-    Places to eat:
-    <input type="text" name="placesToEat" value="{{diveFromDB.placesToEat}}" />
-  </label>
+	<label>
+		Places to eat:
+		<input type="text" name="placesToEat" value="{{diveFromDB.placesToEat}}" />
+	</label>
 
-  <label>
-    Comments:
-    <textarea
-      name="comments"
-      cols="30"
-      rows="6"
-    >{{diveFromDB.comments}}</textarea>
-  </label>
+	<label>
+		Comments:
+		<textarea
+			name="comments"
+			cols="30"
+			rows="6"
+		>{{diveFromDB.comments}}</textarea>
+	</label>
 
-  <label>
-    Buddy:
-    <input type="text" name="buddy" value="{{diveFromDB.buddy}}" />
-  </label>
+	<label>
+		Buddy:
+		<input type="text" name="buddy" value="{{diveFromDB.buddy}}" />
+	</label>
 
-  <button type="submit"> Edit </button>
+	<button type="submit"> Edit </button>
 </form>
 
-<a href="/diving-site-details/{{diveFromDB._id}}">Cancel edit</a>
+<a href="/diving-site-details/{{diveFromDB._id}}">Cancel edit</a> --}}
+
+<div class="container d-flex">
+	<div class="row col-6">
+
+		<form
+			method="post"
+			action="/diving-sites/{{diveFromDB._id}}/edit"
+			enctype="multipart/form-data"
+		>
+			<h3>Edit a Dive</h3>
+
+			<div class="card feature-col-4">
+
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+						</div>
+						<div class="form-outline col">
+							<input
+								type="text"
+								name="divingSite"
+								class="form-control"
+								value="{{diveFromDB.divingSite}}"
+							/>
+							<label class="form-label" for="form6Example3">Diving Site</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<input
+								type="number"
+								name="depth"
+								min="0"
+								class="form-control"
+								value="{{diveFromDB.depth}}"
+							/>
+							<label class="form-label" for="form6Example3">Depth</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+							<h6>min</h6>
+						</div>
+						<div class="form-outline col">
+							<input
+								type="number"
+								name="duration"
+								min="0"
+								class="form-control"
+								value="{{diveFromDB.duration}}"
+							/>
+							<label class="form-label" for="form6Example3">Duration</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<input
+								type="text"
+								name="buddy"
+								class="form-control"
+								value="{{diveFromDB.buddy}}"
+							/>
+							<label class="form-label" for="form6Example3">Buddy</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-chat-left-text" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<textarea
+								name="comments"
+								cols="30"
+								rows="6"
+								class="form-control"
+							>{{diveFromDB.comments}}
+							</textarea>
+							<label class="form-label" for="form6Example3">Comments</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-apple" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<input
+								type="text"
+								name="placesToEat"
+								class="form-control"
+								value="{{diveFromDB.placesToEat}}"
+							/>
+							<label class="form-label" for="form6Example3">Places to Eat nearby</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{! image container---------------------------------------- }}
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-image" style="font-size: 2rem;"></i>
+						</div>
+						<div class="form-outline col">
+							<div class="col-auto">
+								<img
+									id="image-preview"
+									src=""
+									style="width: auto; height: 8rem; display:none;"
+								/>
+							</div>
+							<input
+								type="file"
+								name="imgDive"
+								onchange="previewImage(event)"
+								class="form-control form-control-lg"
+							/>
+							<label class="form-label" for="form6Example3">Image </label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{! imageeeee }}
+
+			<button class="btn btn-primary" type="submit"> Submit Edit </button>
+			<a
+				class="btn btn-secondary"
+				href="/diving-site-details/{{diveFromDB._id}}"
+			>Cancel edit</a>
+
+		</form>
+
+	</div>
+	<div class="my-5">
+		<img src="/images/edit-form.png" alt="woman diving with medusas" />
+	</div>
+</div>
+
+<script>
+	function previewImage(event) { const imagePreview =
+	document.getElementById("image-preview"); const file = event.target.files[0];
+	if (file) { const reader = new FileReader(); reader.onload = function(e) {
+	imagePreview.src = e.target.result; imagePreview.style.display = "block"; };
+	reader.readAsDataURL(file); } else { imagePreview.src = "";
+	imagePreview.style.display = "none"; } }
+</script>

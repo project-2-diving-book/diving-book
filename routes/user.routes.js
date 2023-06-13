@@ -22,8 +22,6 @@ router.get(
 			User.findOne({ username: username })
 
 				.then((userDBIsLoggedIn) => {
-					console.log(req.session.currentUser, "current user");
-					console.log(userDBIsLoggedIn, "user from DB");
 					userIsLoggedIn = userDBIsLoggedIn;
 					return Dive.find().populate("user");
 				})
@@ -91,7 +89,6 @@ router.post("/:username/edit", isLoggedIn, (req, res, next) => {
 		{ new: true }
 	)
 		.then((userInfoUpdated) => {
-			console.log(userInfoUpdated);
 			res.redirect(`/user-profile/${userInfoUpdated.username}`);
 		})
 		.catch((error) => {
