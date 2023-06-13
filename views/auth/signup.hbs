@@ -75,7 +75,7 @@
 													<img
 														id="image-preview"
 														src=""
-														style="width: 4rem; height: 4rem;"
+														style="width: 4rem; height: 4rem; display:none;"
 													/>
 												</div>
 												<input
@@ -83,6 +83,7 @@
 													name="imgProfile"
 													onchange="previewImage(event)"
 													class="form-control form-control-lg"
+													required
 												/>
 												<label
 													class="form-label"
@@ -116,7 +117,7 @@
 												<input
 													type="text"
 													name="username"
-													class="form-control form-control-lg form-control-file"
+													class="form-control form-control-lg"
 												/>
 												<label
 													class="form-label"
@@ -152,6 +153,8 @@
 <script>
 	function previewImage(event) { const imagePreview =
 	document.getElementById("image-preview"); const file = event.target.files[0];
-	const reader = new FileReader(); reader.onload = function(e) {
-	imagePreview.src = e.target.result; }; reader.readAsDataURL(file); }
+	if (file) { const reader = new FileReader(); reader.onload = function(e) {
+	imagePreview.src = e.target.result; imagePreview.style.display = "block"; };
+	reader.readAsDataURL(file); } else { imagePreview.src = "";
+	imagePreview.style.display = "none"; } }
 </script>

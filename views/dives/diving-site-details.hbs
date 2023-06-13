@@ -1,41 +1,107 @@
-<h1>{{diveDetails.divingSite}}</h1>
+<div class="container text-center">
+	<div class="row">
+		<div class="col">
+
+			<div class="card card-dive">
+
+				<div class="card-body">
+					<h5 class="uppercase text-left">Diving Site:</h5>
+					<h3 class="card-title text-left">{{diveDetails.divingSite}}</h3>
+					<p class="card-text">Some quick example text to build on the card
+						title and make up the bulk of the card's content.</p>
+
+					<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+						<div class="feature-col">
+							<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+							<h6>Depth: {{diveDetails.depth}}m</h6></div>
+						<div class="feature-col">
+
+							<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+							<h6>
+								{{diveDetails.duration}}min</h6>
+						</div>
+
+					</div>
+					<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+						<div class="feature-col">
+							<div class="flex-shrink-0 justify-content-center">
+								<img
+									src="{{diveDetails.user.imgProfile}}"
+									alt="Generic placeholder image"
+									class="img-fluid rounded-circle border border-dark border-3"
+									style="width: 50px;"
+								/>
+							</div>
+							{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
+							<a href="/user/user-profile/{{diveDetails.user.username}}">
+								{{diveDetails.user.username}}</a>
+						</div>
+						<div class="feature-col">
+							<div class="flex-shrink-0 justify-content-center">
+								<img
+									src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+									alt="Generic placeholder image"
+									class="img-fluid rounded-circle border border-dark border-3"
+									style="width: 50px; height:50; background-color:aqua"
+								/>
+							</div>
+
+							<h6>Buddy</h6>
+							<p>{{diveDetails.buddy}}</p>
+							{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
+							{{!-- <a href="/user/user-profile/{{diveDetails.user.username}}">
+								{{diveDetails.user.username}}</a> --}}
+						</div>
+					</div>
+					<div class="row">
+						<div class="col">
+							<h6>Comments:</h6>
+							<p>{{diveDetails.comments}}</p>
+						</div>
+						<div class="col">
+							<h6>Places to Eat nearby:</h6>
+							<p>{{diveDetails.placesToEat}}</p>
+						</div>
+					</div>
+
+					<div class="row g-4 row-cols-1 row-cols-lg-2">
+						<div class="feature-col">
+							<form
+								action="/diving-sites/{{diveDetails._id}}/edit"
+								method="GET"
+							>
+								<button class="btn btn-secondary" type="submit">Edit</button>
+							</form>
+						</div>
+						<div class="feature-col">
+							<form
+								action="/diving-sites/{{diveDetails._id}}/delete"
+								method="POST"
+							>
+								<button class="btn btn-secondary" type="submit">Delete</button>
+							</form>
+						</div>
+						{{!-- <div class="feature-col">
+						<form action="/diving-sites/{{this._id}}/delete" method="POST">
+							<button class="btn btn-secondary">Delete</button>
+						</form>
+					</div> --}}
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col">
+			{{#if imgDive}}
+				<img src="{{imgDive}}" class="card-img-top" alt="" />
+			{{else}}
+				<img
+					src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+					class="card-img-top"
+					alt="Fissure in Sandstone"
+				/>
+			{{/if}}
+		</div>
+	</div>
+</div>
 
 <hr />
-
-<h3>Depth:</h3>
-<p>{{diveDetails.depth}}</p>
-
-<h3>Duration:</h3>
-<p>{{diveDetails.duration}}</p>
-
-<h3>Buddy:</h3>
-<p>{{diveDetails.buddy}}</p>
-
-<h3>Places to eat:</h3>
-<p>{{diveDetails.placesToEat}}</p>
-
-<h3>Comments:</h3>
-<p>{{diveDetails.comments}}</p>
-
-<h3>User:</h3>
-<p>{{diveDetails.user.username}}</p>
-
-<hr />
-<form action="/diving-sites/{{diveDetails._id}}/edit" method="GET">
-  <button class="btn btn-secondary">Edit</button>
-</form>
-<form action="/diving-sites/{{diveDetails._id}}/delete" method="POST">
-  <button class="btn btn-secondary">Delete</button>
-</form>
-{{!-- <a href="/diving-sites/{{diveDetails._id}}/edit">edit</a> --}}
-<br />
-<br />
-{{#if errorMessage}}
-  <p class="error">{{errorMessage}}</p>
-{{/if}}
-
-{{!-- {{#if userIsLoggedIn.email === diveDetails.user.email}} --}}
-<a href="/user/user-profile/{{diveDetails.user.username}}">Back to user profile</a> <br />
-{{!-- {{else}} --}}
-<a href="/diving-sites">Back to dives list</a>
-{{!-- {{/if}} --}}
