@@ -28,7 +28,15 @@
 							{{duration}}min</h6>
 					</div>
 					<div class="feature-col">
-						<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+						<div class="flex-shrink-0 justify-content-center">
+							<img
+								src="{{user.imgProfile}}"
+								alt="Generic placeholder image"
+								class="img-fluid rounded-circle border border-dark border-3"
+								style="width: 50px;"
+							/>
+						</div>
+						{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
 						<a href="/user/user-profile/{{user.username}}">
 							{{user.username}}</a>
 					</div>

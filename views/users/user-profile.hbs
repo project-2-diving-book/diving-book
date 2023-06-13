@@ -93,13 +93,18 @@
         </div>
       </section>
 
-      {{#unless diveOwnerDetails}}
-        <!-- Content for the first div (4 columns) -->
-        <div id="logDive" class="container-fluid shadow">
-          <form method="post" action="/diving-sites/create">
-            <h3>Log a Dive</h3>
+			{{#unless diveOwnerDetails}}
+				<!-- Content for the first div (4 columns) -->
+				<div class="container-fluid shadow">
 
-            <div class="card">
+					<form
+						method="post"
+						action="/diving-sites/create"
+						enctype="multipart/form-data"
+					>
+						<h3>Log a Dive</h3>
+
+						<div class="card feature-col-4">
 
               <div class="card-body">
                 <div class="row">
@@ -138,28 +143,28 @@
               </div>
             </div>
 
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-                    <h6>{{duration}}min</h6>
-                  </div>
-                  <div class="form-outline col">
-                    <input
-                      type="number"
-                      name="duration"
-                      min="0"
-                      class="form-control"
-                    />
-                    <label
-                      class="form-label"
-                      for="form6Example3"
-                    >Duration</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+										<h6>min</h6>
+									</div>
+									<div class="form-outline col">
+										<input
+											type="number"
+											name="duration"
+											min="0"
+											class="form-control"
+										/>
+										<label
+											class="form-label"
+											for="form6Example3"
+										>Duration</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
             <div class="card">
               <div class="card-body">
@@ -185,22 +190,23 @@
                       style="font-size: 2rem;"
                     ></i>
 
-                  </div>
-                  <div class="form-outline col">
-                    <textarea
-                      name="comments"
-                      cols="30"
-                      rows="6"
-                      class="form-control"
-                    > </textarea>
-                    <label
-                      class="form-label"
-                      for="form6Example3"
-                    >Comments</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+									</div>
+									<div class="form-outline col">
+										<textarea
+											name="comments"
+											cols="30"
+											rows="6"
+											class="form-control"
+										>
+										</textarea>
+										<label
+											class="form-label"
+											for="form6Example3"
+										>Comments</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
             <div class="card">
               <div class="card-body">
@@ -222,7 +228,36 @@
               </div>
             </div>
 
-            <button class="btn btn-primary" type="submit"> Create </button>
+						{{! image container---------------------------------------- }}
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-image" style="font-size: 2rem;"></i>
+									</div>
+									<div class="form-outline col">
+										<div class="col-auto">
+											<img
+												id="image-preview"
+												src=""
+												style="width: auto; height: 8rem; display:none;"
+											/>
+										</div>
+										<input
+											type="file"
+											name="imgDive"
+											onchange="previewImage(event)"
+											class="form-control form-control-lg"
+										/>
+										<label class="form-label" for="form6Example3">Image </label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						{{! imageeeee ------------}}
+
+						<button class="btn btn-primary" type="submit"> Create </button>
 
           </form>
 
@@ -235,18 +270,21 @@
       <div class="card-container diving-list-container">
         {{#each userDivesArr}}
 
-          <div class="card card-dive mx-3 my-3">
-
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-              class="card-img-top"
-              alt="Fissure in Sandstone"
-            />
-            <div class="card-body">
-              <p class="uppercase text-left">Diving Site:</p>
-              <h5 class="card-title text-left">{{divingSite}}</h5>
-              <p class="card-text">Some quick example text to build on the card
-                title and make up the bulk of the card's content.</p>
+					<div class="card card-dive mx-3 my-3">
+						{{#if imgDive}}
+							<img src="{{imgDive}}" class="card-img-top" alt="" />
+						{{else}}
+							<img
+								src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+								class="card-img-top"
+								alt="Fissure in Sandstone"
+							/>
+						{{/if}}
+						<div class="card-body">
+							<p class="uppercase text-left">Diving Site:</p>
+							<h5 class="card-title text-left">{{divingSite}}</h5>
+							<p class="card-text">Some quick example text to build on the card
+								title and make up the bulk of the card's content.</p>
 
               <div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
                 <div class="feature-col">
@@ -254,16 +292,26 @@
                   <h6>{{depth}}m</h6></div>
                 <div class="feature-col">
 
-                  <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-                  <h6>
-                    {{duration}}min</h6>
-                </div>
-                <div class="feature-col">
-                  <i class="bi bi-file-person" style="font-size: 2rem;"></i>
-                  <h6>
-                    {{user.username}}</h6>
-                </div>
-              </div>
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>
+										{{duration}}min</h6>
+								</div>
+								<div class="feature-col">
+									<div class="flex-shrink-0 justify-content-center">
+
+										<img
+											src="{{user.imgProfile}}"
+											alt="Generic placeholder image"
+											class="img-fluid rounded-circle border border-dark border-3"
+											style="width: 50px;"
+										/>
+
+									</div>
+
+									<h6>
+										{{user.username}}</h6>
+								</div>
+							</div>
 
               <div class="row g-4 row-cols-1 row-cols-lg-2">
                 <div class="feature-col">

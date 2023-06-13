@@ -106,31 +106,33 @@
 			</div>
 
 			{{! image container---------------------------------------- }}
-			<div class="card-body">
-				<div class="row">
-					<div class="col-auto">
-						<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
-					</div>
-					<div class="form-outline col">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
 						<div class="col-auto">
-							<img
-								id="image-preview"
-								src=""
-								style="width: 6rem; height: 6rem;"
-							/>
+							<i class="bi bi-image" style="font-size: 2rem;"></i>
 						</div>
-						<input
-							type="file"
-							name="imgDive"
-							onchange="previewImage(event)"
-							class="form-control form-control-lg"
-						/>
-						<label class="form-label" for="form6Example3">Image </label>
+						<div class="form-outline col">
+							<div class="col-auto">
+								<img
+									id="image-preview"
+									src=""
+									style="width: auto; height: 8rem; display:none;"
+								/>
+							</div>
+							<input
+								type="file"
+								name="imgDive"
+								onchange="previewImage(event)"
+								class="form-control form-control-lg"
+							/>
+							<label class="form-label" for="form6Example3">Image </label>
+						</div>
 					</div>
 				</div>
 			</div>
 
-			{{! imageeeee --------------------------}}
+			{{! imageeeee --------------}}
 
 			<button class="btn btn-primary" type="submit"> Create </button>
 
@@ -144,9 +146,18 @@
 
 {{! image changes }}
 
-<script>
+{{! <script>
 	function previewImage(event) { const imagePreview =
 	document.getElementById("image-preview"); const file = event.target.files[0];
 	const reader = new FileReader(); reader.onload = function(e) {
 	imagePreview.src = e.target.result; }; reader.readAsDataURL(file); }
+</script> }}
+
+<script>
+	function previewImage(event) { const imagePreview =
+	document.getElementById("image-preview"); const file = event.target.files[0];
+	if (file) { const reader = new FileReader(); reader.onload = function(e) {
+	imagePreview.src = e.target.result; imagePreview.style.display = "block"; };
+	reader.readAsDataURL(file); } else { imagePreview.src = "";
+	imagePreview.style.display = "none"; } }
 </script>

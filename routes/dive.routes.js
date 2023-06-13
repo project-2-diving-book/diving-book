@@ -78,15 +78,15 @@ router.post(
       imgDive: req.file.path,
     };
 
-    Dive.create(newDive)
-      .then(() => {
-        res.redirect("/user-profile/:username");
-      })
-      .catch((error) => {
-        console.log("Error on creating a dive", error);
-        next(error);
-      });
-  }
+		Dive.create(newDive)
+			.then(() => {
+				res.redirect(`/user/user-profile/${req.session.currentUser.username}`);
+			})
+			.catch((error) => {
+				console.log("Error on creating a dive", error);
+				next(error);
+			});
+	}
 );
 
 ////////////////////    Update Diving Site
