@@ -38,3 +38,7 @@ illu {
 #dropdown-menu {
 	left: -100;
 }
+
+#map {
+	height: 720px;
+}
