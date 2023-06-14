@@ -213,24 +213,21 @@ router.post(
 		const userEmail = req.session.currentUser.email;
 		let diveToDo = {};
 
-		Dive.findById(diveId)
-			.then((diveFromDB) => {
-				diveToDo = diveFromDB;
-				//console.log(diveToDo)
-				return User.findOne({ email: userEmail });
-			})
-			.then((userFromDB) => {
-				//console.log(userFromDB)
-				userFromDB.divesToDo.push(diveToDo);
-				userFromDB.save();
-				//console.log(userFromDB)
-				res.redirect("/diving-sites");
-			})
-			.catch((error) => {
-				console.log("Error finding user in DB", error);
-				next(error);
-			});
-	}
+    Dive.findById(diveId)
+      .then((diveFromDB) => {
+        diveToDo = diveFromDB;
+        return User.findOne({ email: userEmail });
+      })
+      .then((userFromDB) => {
+        userFromDB.divesToDo.push(diveToDo);
+        userFromDB.save();
+        res.redirect("/diving-sites");
+      })
+      .catch((error) => {
+        console.log("Error finding user in DB", error);
+        next(error);
+      });
+  }
 );
 
 module.exports = router;
