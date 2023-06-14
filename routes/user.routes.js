@@ -31,7 +31,11 @@ router.get(
               userDivesArr.push(dive);
             }
           });
-          res.render("users/user-profile", { userDivesArr, userIsLoggedIn });
+
+          res.render("users/user-profile", {
+            userDivesArr,
+            userIsLoggedIn
+          });
         })
         .catch((error) => {
           console.log("Error finding user in DB", error);
@@ -97,35 +101,55 @@ router.post("/:username/edit", isLoggedIn, (req, res, next) => {
     });
 });
 
+router.get("/user-profile/:divetodoId/remove", isLoggedIn, (req, res, next) => {
+  const { divetodoId } = req.params;
+  const { username } = req.session.currentUser;
+
+  User.findOne({ username: username })
+    .populate("divesToDo")
+    .then((userDetails) => {
+      const diveToRemoveIndex = userDetails.divesToDo.findIndex(
+        (elm) => elm._id.valueOf() === divetodoId
+      );
+      userDetails.divesToDo.splice(diveToRemoveIndex, 1);
+      return User.findOneAndUpdate(
+        { username: username },
+        {divesToDo: userDetails.divesToDo})
+    .then(() => {
+        res.redirect(`/user/user-profile/${username}/dives-to-do`);
+      });
+    })
+    .catch((error) => {
+      console.log("Error finding user in DB", error);
+      next(error);
+    });
+});
+
 router.get(
   "/user-profile/:username/dives-to-do",
   isLoggedIn,
   (req, res, next) => {
-    // const { username } = req.params;
-
-    // User.findOne({username: username})
-    // 	.populate("divesToDo")
-    // 	.then((userIsLoggedIn) => {
-    // 		res.render("users/user-profile", { userIsLoggedIn })
-    // 	})
-    // 	.catch((error) => {
-    // 		console.log("Error finding user in DB", error);
-    // 		next(error);
-    // 	})
-
     const username = req.session.currentUser.username;
     const diveOwner = req.params.username;
     let userIsLoggedIn = req.session.currentUser;
     let diveOwnerDetails = null;
+    const removeToDo = true;
 
     if (username === diveOwner) {
       User.findOne({ username: username })
-        .populate("divesToDo")
+        .populate({
+          path: "divesToDo",
+          populate: {
+            path: "user",
+          },
+        })
         .then((userDBIsLoggedIn) => {
           userIsLoggedIn = userDBIsLoggedIn;
-		  console.log(userIsLoggedIn)
-
-          res.render("users/user-profile", { userIsLoggedIn, userDivesArr: userIsLoggedIn.divesToDo });
+          res.render("users/user-profile", {
+            userIsLoggedIn,
+            userDivesArr: userIsLoggedIn.divesToDo,
+            removeToDo,
+          });
         })
         .catch((error) => {
           console.log("Error finding user in DB", error);
@@ -133,12 +157,20 @@ router.get(
         });
     } else {
       User.findOne({ username: diveOwner })
-        .populate("divesToDo")
+        .populate({
+          path: "divesToDo",
+          populate: {
+            path: "user",
+          },
+        })
         .then((userDB) => {
           diveOwnerDetails = userDB;
-		  console.log(diveOwnerDetails)
 
-          res.render("users/user-profile", { diveOwnerDetails, userDivesArr: diveOwnerDetails.divesToDo });
+          res.render("users/user-profile", {
+            userIsLoggedIn,
+            diveOwnerDetails,
+            userDivesArr: diveOwnerDetails.divesToDo,
+          });
         })
         .catch((error) => {
           console.log("Error finding user in DB", error);

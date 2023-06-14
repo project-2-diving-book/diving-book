@@ -269,7 +269,7 @@
     <div class="col-9">
       <!-- Content for the second div (8 columns) -->
       {{#if diveOwnerDetails}}
-        <div class="col-12 justify-items-center">
+        <div class="col-12 justify-content-center">
           <form
             action="/user/user-profile/{{diveOwnerDetails.username}}"
             method="get"
@@ -353,6 +353,14 @@
                     href="/diving-site-details/{{this._id}}"
                   >View details</a>
                 </div>
+                {{#if removeToDo}}
+                  <div class="feature-col">
+                    <a
+                      class="btn btn-secondary"
+                      href="/user/user-profile/{{this._id}}/remove"
+                    >Remove to do</a>
+                  </div>
+                {{/if}}
               </div>
             </div>
           </div>

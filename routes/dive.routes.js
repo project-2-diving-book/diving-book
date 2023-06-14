@@ -181,14 +181,11 @@ router.post(
     Dive.findById(diveId)
       .then((diveFromDB) => {
         diveToDo = diveFromDB;
-        //console.log(diveToDo)
         return User.findOne({ email: userEmail });
       })
       .then((userFromDB) => {
-        //console.log(userFromDB)
         userFromDB.divesToDo.push(diveToDo);
         userFromDB.save();
-        //console.log(userFromDB)
         res.redirect("/diving-sites");
       })
       .catch((error) => {
