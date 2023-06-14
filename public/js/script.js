@@ -5,42 +5,139 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log("diving-book JS imported successfully!");
 });
 
-const dropdown = document.getElementsByClassName("dropdown-togglerrr");
+// const dropdown = document.getElementsByClassName("dropdown-togglerrr");
+
+const logDive = document.querySelector(".log-dive-form");
+const coordsInput = document.querySelector("#coords-input");
+
+let map;
+let mapEvent;
+
+_getPosition();
+
+logDive.addEventListener("submit", _newDive);
+
+function _getPosition() {
+	if (navigator.geolocation) navigator.geolocation.getCurrentPosition(_loadMap);
+}
+
+function _loadMap(position) {
+	const { latitude } = position.coords;
+	const { longitude } = position.coords;
+
+	const coords = [latitude, longitude];
+
+	map = L.map("map").setView([36.90376456363123, 25.977802314643156], 19);
+
+	L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+		maxZoom: 19,
+		attribution:
+			'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+	}).addTo(map);
+	L.Control.geocoder().addTo(map);
+
+	///////////////////////
+	///////
+	/////					HANDLING CLICKS
+	/////
+	///////////////////////
+
+	map.on("click", _showForm);
+	// this._renderDiveMarkers();
+}
+
+function _newDive() {
+	const { lat, lng } = this.mapEvent.latlng;
+	L.marker([lat, lng])
+		.addTo(this.map)
+		.bindPopup(
+			L.popup({
+				maxWidth: 200,
+				minWidth: 100,
+				autoClose: false,
+				closeOnClick: false,
+				className: "popup",
+			})
+		)
+		.setPopupContent("dive")
+		.openPopup();
+}
+
+function _showForm(mapE) {
+	mapEvent = mapE;
+	logDive.classList.remove("hidden");
+	console.log(mapEvent.latlng, "this map event");
+	coordsInput.value = mapEvent.latlng;
+	console.log(coordsInput.value, "this is the value");
+}
+
+function _renderDiveMarkers() {
+	L.marker([lat, lng])
+		.addTo(map)
+		.bindPopup(
+			L.popup({
+				maxWidth: 200,
+				minWidth: 100,
+				autoClose: false,
+				closeOnClick: false,
+				className: "popup",
+			})
+		)
+		.setPopupContent("dive")
+		.openPopup();
+}
+
+fetch("/diving-sites/api")
+	.then((response) => response.json())
+	.then((allDives) => {
+		let newArray = [];
+		let otherArray = [];
+		allDives.forEach((e) => {
+			if (e.coords) {
+				newArray.push(e.coords);
+			}
+		});
+		newArray.forEach((e) => {
+			const regex = /LatLng\(([^,]+), ([^)]+)\)/;
+			const matches = e.match(regex);
+
+			if (matches && matches.length === 3) {
+				const latitude = parseFloat(matches[1]);
+				const longitude = parseFloat(matches[2]);
+
+				const coordinates = [latitude, longitude];
+				otherArray.push(coordinates);
+			}
+		});
+
+		otherArray.forEach((e) => {
+			L.marker(e)
+				.addTo(map)
+				.bindPopup(
+					L.popup({
+						maxWidth: 200,
+						minWidth: 100,
+						autoClose: false,
+						closeOnClick: false,
+						className: "popup",
+					})
+				)
+				.setPopupContent("dive")
+				.openPopup();
+		});
+	})
+	.catch((error) => {
+		console.error("Error:", error);
+	});
 
 ///////////////////////////////////////////////////
 ////
 ////     Leaflet Map
 ////
 ///////////////////////////////////////////////////
-if (navigator.geolocation) {
-	navigator.geolocation.getCurrentPosition(
-		function (position) {
-			const { latitude } = position.coords;
-			const { longitude } = position.coords;
-			console.log(latitude, longitude);
 
-			const coords = [latitude, longitude];
-
-			const map = L.map("map").setView(
-				[36.90376456363123, 25.977802314643156],
-				19
-			);
-
-			L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-				maxZoom: 19,
-				attribution:
-					'&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-			}).addTo(map);
-
-			map.on("click", function (mapEvent) {
-				console.log(mapEvent, "mapEvent");
-				const { lat, lng } = mapEvent.latlng;
-
-				L.marker([lat, lng]).addTo(map).bindPopup("Dive").openPopup();
-			});
-		},
-		function () {
-			alert("could not get your position");
-		}
-	);
-}
+//////////////////////////
+/////
+/////  display map
+/////
+//////////////////////////

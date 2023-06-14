@@ -17,15 +17,10 @@ const isUserThatCreatedDive = require("../middleware/isUserThatCreatedDive");
 ////////
 
 ///////////////   Displaying Diving Sites
-
-router.get("/diving-sites", (req, res, next) => {
+router.get("/diving-sites/api", (req, res, next) => {
 	Dive.find()
-		.populate("user")
 		.then((allDives) => {
-			res.render("dives/dives-list", {
-				allDives,
-				userIsLoggedIn: req.session.currentUser,
-			});
+			res.json(allDives);
 		})
 		.catch((error) => {
 			console.log("Error on getting the list of dives", error);
@@ -33,6 +28,22 @@ router.get("/diving-sites", (req, res, next) => {
 		});
 });
 
+router.get("/diving-sites", (req, res, next) => {
+	Dive.find()
+
+		.then((allDives) => {
+			// res.json(allDives);
+			res.render("dives/dives-list", {
+				allDives,
+				userIsLoggedIn: req.session.currentUser,
+			});
+		})
+
+		.catch((error) => {
+			console.log("Error on getting the list of dives", error);
+			next(error);
+		});
+});
 ///////////////   Displaying Diving Site Details
 
 router.get("/diving-site-details/:id", (req, res, next) => {
@@ -55,8 +66,11 @@ router.get("/diving-site-details/:id", (req, res, next) => {
 //////////////////  CREATE Diving Site
 
 router.get("/diving-sites/create", isLoggedIn, (req, res, next) => {
-	res.render("dives/diving-sites-create", {
-		userIsLoggedIn: req.session.currentUser,
+	Dive.find().then((allDives) => {
+		res.render("dives/diving-sites-create", {
+			allDives: JSON.stringify(allDives),
+			userIsLoggedIn: req.session.currentUser,
+		});
 	});
 });
 
@@ -73,6 +87,7 @@ router.post(
 			comments,
 			placesToEat,
 			imgDive,
+			coords,
 		} = req.body;
 
 		let newDive = {
@@ -82,6 +97,7 @@ router.post(
 			buddy,
 			comments,
 			placesToEat,
+			coords,
 			user: req.session.currentUser,
 		};
 

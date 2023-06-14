@@ -41,4 +41,24 @@ illu {
 
 #map {
 	height: 720px;
+	/* margin-top: 500px; */
+}
+
+.leaflet-popup .leaflet-popup-content-wrapper {
+	background-color: #2d3439;
+	color: #ececec;
+	border-radius: 5px;
+	padding-right: 0.6rem;
+}
+
+.leaflet-popup .leaflet-popup-content {
+	font-size: 1.5rem;
+}
+
+.leaflet-popup .leaflet-popup-tip {
+	background-color: #2d3439;
+}
+
+.hidden {
+	display: none !important;
 }
