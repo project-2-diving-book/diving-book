@@ -1,63 +1,63 @@
 <div class="container-fluid w-100">
-  <div class="row w-100">
-    <div class="col-3 container-fluid">
+	<div class="row w-100">
+		<div class="col-3 container-fluid">
 
-      <section style="background-color:white;">
-        <div class="container w-100 my-5">
-          <div class="row d-flex justify-content-center align-items-center">
-            <div class="col col-md-10 col-lg-10 col-xl-10">
-              <div
-                class="card shadow"
-                style="border-radius: 15px; background-color: white;"
-              >
-                <div class="card-body p-4 text-black">
-                  <div>
-                    {{#if diveOwnerDetails}}
-                      <h6 class="mb-4">{{diveOwnerDetails.username}}</h6>
-                    {{else}}
-                      <h6 class="mb-4">{{userIsLoggedIn.username}}</h6>
-                    {{/if}}
-                    <div
-                      class="d-flex align-items-center justify-content-between mb-3"
-                    >
-                      {{#if diveOwnerDetails}}
+			<section style="background-color:white;">
+				<div class="container w-100 my-5">
+					<div class="row d-flex justify-content-center align-items-center">
+						<div class="col col-md-10 col-lg-10 col-xl-10">
+							<div
+								class="card shadow"
+								style="border-radius: 15px; background-color: white;"
+							>
+								<div class="card-body p-4 text-black">
+									<div>
+										{{#if diveOwnerDetails}}
+											<h6 class="mb-4">{{diveOwnerDetails.username}}</h6>
+										{{else}}
+											<h6 class="mb-4">{{userIsLoggedIn.username}}</h6>
+										{{/if}}
+										<div
+											class="d-flex align-items-center justify-content-between mb-3"
+										>
+											{{#if diveOwnerDetails}}
 
-                        <p class="small mb-0">
-                          <i
-                            class="far fa-clock me-2"
-                          ></i>{{diveOwnerDetails.divingLevel}}</p>
-                      {{else}}
+												<p class="small mb-0">
+													<i
+														class="far fa-clock me-2"
+													></i>{{diveOwnerDetails.divingLevel}}</p>
+											{{else}}
 
-                        <p class="small mb-0">
-                          <i
-                            class="far fa-clock me-2"
-                          ></i>{{userIsLoggedIn.divingLevel}}</p>
-                      {{/if}}
-                      {{! <p class="fw-bold mb-0">Number of Dives</p> }}
-                    </div>
-                  </div>
-                  <div class="d-flex align-items-center mb-4">
+												<p class="small mb-0">
+													<i
+														class="far fa-clock me-2"
+													></i>{{userIsLoggedIn.divingLevel}}</p>
+											{{/if}}
+											{{! <p class="fw-bold mb-0">Number of Dives</p> }}
+										</div>
+									</div>
+									<div class="d-flex align-items-center mb-4">
 
-                    <div class="flex-shrink-0">
+										<div class="flex-shrink-0">
 
-                      {{#if diveOwnerDetails}}
-                        <img
-                          src="{{diveOwnerDetails.imgProfile}}"
-                          alt="Generic placeholder image"
-                          class="img-fluid rounded-circle border border-dark border-3"
-                          style="width: 70px;"
-                        />
-                      {{else}}
-                        <img
-                          src="{{userIsLoggedIn.imgProfile}}"
-                          alt="Generic placeholder image"
-                          class="img-fluid rounded-circle border border-dark border-3"
-                          style="width: 70px;"
-                        />
-                      {{/if}}
-                    </div>
-                    <div class="flex-grow-1 ms-3">
-                      {{!-- <div class="d-flex flex-row align-items-center mb-2">
+											{{#if diveOwnerDetails}}
+												<img
+													src="{{diveOwnerDetails.imgProfile}}"
+													alt="Generic placeholder image"
+													class="img-fluid rounded-circle border border-dark border-3"
+													style="width: 70px;"
+												/>
+											{{else}}
+												<img
+													src="{{userIsLoggedIn.imgProfile}}"
+													alt="Generic placeholder image"
+													class="img-fluid rounded-circle border border-dark border-3"
+													style="width: 70px;"
+												/>
+											{{/if}}
+										</div>
+										<div class="flex-grow-1 ms-3">
+											{{!-- <div class="d-flex flex-row align-items-center mb-2">
                         {{#if diveOwnerDetails}}
                           <p
                             class="mb-0 me-2"
@@ -66,202 +66,201 @@
                           <p class="mb-0 me-2">@{{userIsLoggedIn.username}}</p>
                         {{/if}}
                       </div> --}}
-                      <div>
-                        {{#if diveOwnerDetails}}
-                          <p> {{diveOwnerDetails.firstName}}</p>
-                          <p> {{diveOwnerDetails.lastName}}</p>
-                          <p> {{diveOwnerDetails.email}}</p>
-                        {{else}}
-                          <p> {{userIsLoggedIn.firstName}}</p>
-                          <p> {{userIsLoggedIn.lastName}}</p>
-                          <p> {{userIsLoggedIn.email}}</p>
-                        {{/if}}
-                      </div>
-                    </div>
-                  </div>
-                  <hr />
-                  {{#unless diveOwnerDetails}}
-                    <a
-                      href="/user/{{userIsLoggedIn.username}}/edit"
-                      class="btn btn-secondary btn-rounded btn-block btn-lg"
-                    >Edit info</a>
-                  {{/unless}}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+											<div>
+												{{#if diveOwnerDetails}}
+													<p> {{diveOwnerDetails.firstName}}</p>
+													<p> {{diveOwnerDetails.lastName}}</p>
+													<p> {{diveOwnerDetails.email}}</p>
+												{{else}}
+													<p> {{userIsLoggedIn.firstName}}</p>
+													<p> {{userIsLoggedIn.lastName}}</p>
+													<p> {{userIsLoggedIn.email}}</p>
+												{{/if}}
+											</div>
+										</div>
+									</div>
+									<hr />
+									{{#unless diveOwnerDetails}}
+										<a
+											href="/user/{{userIsLoggedIn.username}}/edit"
+											class="btn btn-secondary btn-rounded btn-block btn-lg"
+										>Edit info</a>
+									{{/unless}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 
-      {{#unless diveOwnerDetails}}
-        <!-- Content for the first div (4 columns) -->
-        <div class="container-fluid shadow">
+			{{#unless diveOwnerDetails}}
+				<!-- Content for the first div (4 columns) -->
+				<div class="container-fluid shadow">
 
-          <form
-            id="logDive"
-            method="post"
-            action="/diving-sites/create"
-            enctype="multipart/form-data"
-          >
-            <h3>Log a Dive</h3>
+					<form
+						id="logDive"
+						method="post"
+						action="/diving-sites/create"
+						enctype="multipart/form-data"
+					>
+						<h3>Log a Dive</h3>
 
-            <div class="card feature-col-4">
+						<div class="card feature-col-4">
 
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
-                  </div>
-                  <div class="form-outline col">
-                    <input type="text" name="divingSite" class="form-control" />
-                    <label class="form-label" for="form6Example3">Diving Site</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+									</div>
+									<div class="form-outline col">
+										<input type="text" name="divingSite" class="form-control" />
+										<label class="form-label" for="form6Example3">Diving Site</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            <div class="card">
+						<div class="card">
 
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i
-                      class="bi bi-arrow-bar-down"
-                      style="font-size: 2rem;"
-                    ></i>
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i
+											class="bi bi-arrow-bar-down"
+											style="font-size: 2rem;"
+										></i>
 
-                  </div>
-                  <div class="form-outline col">
-                    <input
-                      type="number"
-                      name="depth"
-                      min="0"
-                      class="form-control"
-                    />
-                    <label class="form-label" for="form6Example3">Depth</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+									</div>
+									<div class="form-outline col">
+										<input
+											type="number"
+											name="depth"
+											min="0"
+											class="form-control"
+										/>
+										<label class="form-label" for="form6Example3">Depth</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-                    <h6>min</h6>
-                  </div>
-                  <div class="form-outline col">
-                    <input
-                      type="number"
-                      name="duration"
-                      min="0"
-                      class="form-control"
-                    />
-                    <label
-                      class="form-label"
-                      for="form6Example3"
-                    >Duration</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+										<h6>min</h6>
+									</div>
+									<div class="form-outline col">
+										<input
+											type="number"
+											name="duration"
+											min="0"
+											class="form-control"
+										/>
+										<label
+											class="form-label"
+											for="form6Example3"
+										>Duration</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i class="bi bi-file-person" style="font-size: 2rem;"></i>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-file-person" style="font-size: 2rem;"></i>
 
-                  </div>
-                  <div class="form-outline col">
-                    <input type="text" name="buddy" class="form-control" />
-                    <label class="form-label" for="form6Example3">Buddy</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+									</div>
+									<div class="form-outline col">
+										<input type="text" name="buddy" class="form-control" />
+										<label class="form-label" for="form6Example3">Buddy</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i
-                      class="bi bi-chat-left-text"
-                      style="font-size: 2rem;"
-                    ></i>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i
+											class="bi bi-chat-left-text"
+											style="font-size: 2rem;"
+										></i>
 
-                  </div>
-                  <div class="form-outline col">
-                    <textarea
-                      name="comments"
-                      cols="30"
-                      rows="6"
-                      class="form-control"
-                    >
-                    </textarea>
-                    <label
-                      class="form-label"
-                      for="form6Example3"
-                    >Comments</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+									</div>
+									<div class="form-outline col">
+										<textarea
+											name="comments"
+											cols="30"
+											rows="6"
+											class="form-control"
+										>
+										</textarea>
+										<label
+											class="form-label"
+											for="form6Example3"
+										>Comments</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i class="bi bi-apple" style="font-size: 2rem;"></i>
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-apple" style="font-size: 2rem;"></i>
 
-                  </div>
-                  <div class="form-outline col">
-                    <input
-                      type="text"
-                      name="placesToEat"
-                      class="form-control"
-                    />
-                    <label class="form-label" for="form6Example3">Places to Eat
-                      nearby</label>
-                  </div>
-                </div>
-              </div>
-            </div>
+									</div>
+									<div class="form-outline col">
+										<input
+											type="text"
+											name="placesToEat"
+											class="form-control"
+										/>
+										<label class="form-label" for="form6Example3">Places to Eat
+											nearby</label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            {{! image container---------------------------------------- }}
-            <div class="card">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-auto">
-                    <i class="bi bi-image" style="font-size: 2rem;"></i>
-                  </div>
-                  <div class="form-outline col">
-                    <div class="col-auto">
-                      <img
-                        id="image-preview"
-                        src=""
-                        style="width: auto; height: 8rem; display:none;"
-                      />
-                    </div>
-                    <input
-                      type="file"
-                      name="imgDive"
-                      onchange="previewImage(event)"
-                      class="form-control form-control-lg"
-                      required
-                    />
-                    <label class="form-label" for="form6Example3">Image </label>
-                  </div>
-                </div>
-              </div>
-            </div>
+						{{! image container---------------------------------------- }}
+						<div class="card">
+							<div class="card-body">
+								<div class="row">
+									<div class="col-auto">
+										<i class="bi bi-image" style="font-size: 2rem;"></i>
+									</div>
+									<div class="form-outline col">
+										<div class="col-auto">
+											<img
+												id="image-preview"
+												src=""
+												style="width: auto; height: 8rem; display:none;"
+											/>
+										</div>
+										<input
+											type="file"
+											name="imgDive"
+											onchange="previewImage(event)"
+											class="form-control form-control-lg"
+										/>
+										<label class="form-label" for="form6Example3">Image </label>
+									</div>
+								</div>
+							</div>
+						</div>
 
-            {{! imageeeee ----}}
+						{{! imageeeee }}
 
-            <button class="btn btn-primary" type="submit"> Create </button>
+						<button class="btn btn-primary" type="submit"> Create </button>
 
-          </form>
+					</form>
 
         </div>
       {{/unless}}
@@ -300,51 +299,51 @@
         </div>
       {{/if}}
 
-      <div class="card-container diving-list-container">
-        {{#each userDivesArr}}
+			<div class="card-container diving-list-container">
+				{{#each userDivesArr}}
 
-          <div class="card card-dive mx-3 my-3">
-            {{#if imgDive}}
-              <img src="{{imgDive}}" class="card-img-top" alt="" />
-            {{else}}
-              <img
-                src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-                class="card-img-top"
-                alt="Fissure in Sandstone"
-              />
-            {{/if}}
-            <div class="card-body">
-              <p class="uppercase text-left">Diving Site:</p>
-              <h5 class="card-title text-left">{{divingSite}}</h5>
-              <p class="card-text">Some quick example text to build on the card
-                title and make up the bulk of the card's content.</p>
+					<div class="card card-dive mx-3 my-3">
+						{{#if imgDive}}
+							<img src="{{imgDive}}" class="card-img-top" alt="" />
+						{{else}}
+							<img
+								src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+								class="card-img-top"
+								alt="Fissure in Sandstone"
+							/>
+						{{/if}}
+						<div class="card-body">
+							<p class="uppercase text-left">Diving Site:</p>
+							<h5 class="card-title text-left">{{divingSite}}</h5>
+							<p class="card-text">Some quick example text to build on the card
+								title and make up the bulk of the card's content.</p>
 
-              <div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
-                <div class="feature-col">
-                  <i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
-                  <h6>{{depth}}m</h6></div>
-                <div class="feature-col">
+							<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+								<div class="feature-col">
+									<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+									<h6>{{depth}}m</h6></div>
+								<div class="feature-col">
 
-                  <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-                  <h6>
-                    {{duration}}min</h6>
-                </div>
-                <div class="feature-col">
-                  <div class="flex-shrink-0 justify-content-center">
+									<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+									<h6>
+										{{duration}}min</h6>
+								</div>
+								<div class="feature-col">
+									<div class="flex-shrink-0 justify-content-center">
 
-                    <img
-                      src="{{user.imgProfile}}"
-                      alt="Generic placeholder image"
-                      class="img-fluid rounded-circle border border-dark border-3"
-                      style="width: 50px;"
-                    />
+										<img
+											src="{{user.imgProfile}}"
+											alt="Generic placeholder image"
+											class="img-fluid rounded-circle border border-dark border-3"
+											style="width: 50px;"
+										/>
 
-                  </div>
+									</div>
 
-                  <h6>
-                    {{user.username}}</h6>
-                </div>
-              </div>
+									<h6>
+										{{user.username}}</h6>
+								</div>
+							</div>
 
               <div class="row g-4 row-cols-1 row-cols-lg-2">
                 <div class="feature-col">
@@ -365,13 +364,13 @@
             </div>
           </div>
 
-        {{else}}
+				{{else}}
 
-          <a class="btn btn-primary my-5" href="#logDive">Log your first one</a>
+					<a class="btn btn-primary my-5" href="#logDive">Log your first one</a>
 
-        {{/each}}
-      </div>
+				{{/each}}
+			</div>
 
-    </div>
-  </div>
+		</div>
+	</div>
 </div>
