@@ -24,6 +24,7 @@ const diveSchema = new Schema(
 		//image
 		imgDive: {
 			type: String,
+			default: "https://res.cloudinary.com/dcslof4ax/image/upload/v1686592088/user-folder/wxjsptzx8l5kplnay3wn.png",
 		},
 
 		placesToEat: {
