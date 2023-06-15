@@ -19,6 +19,7 @@ const isUserThatCreatedDive = require("../middleware/isUserThatCreatedDive");
 ///////////////   Displaying Diving Sites
 router.get("/diving-sites/api", (req, res, next) => {
 	Dive.find()
+		.populate("user")
 		.then((allDives) => {
 			res.json(allDives);
 		})
@@ -30,6 +31,7 @@ router.get("/diving-sites/api", (req, res, next) => {
 
 router.get("/diving-sites", (req, res, next) => {
 	Dive.find()
+		.populate("user")
 		.then((allDives) => {
 			const { currentUser } = req.session;
 			res.render("dives/dives-list", { allDives, userIsLoggedIn: currentUser });

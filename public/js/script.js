@@ -5,10 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	console.log("diving-book JS imported successfully!");
 });
 
-// const dropdown = document.getElementsByClassName("dropdown-togglerrr");
-window.addEventListener("click", (e) => {
-	console.log(e);
-});
+const dropdown = document.getElementsByClassName("dropdown-togglerrr");
+
 const logDive = document.querySelector(".log-dive-form");
 const coordsInput = document.querySelector("#coords-input");
 
@@ -17,7 +15,7 @@ let mapEvent;
 
 _getPosition();
 
-logDive.addEventListener("submit", _newDive);
+// logDive.addEventListener("submit", _newDive);
 
 function _getPosition() {
 	if (navigator.geolocation) navigator.geolocation.getCurrentPosition(_loadMap);
@@ -92,6 +90,7 @@ function _renderDiveMarkers() {
 fetch("/diving-sites/api")
 	.then((response) => response.json())
 	.then((allDives) => {
+		console.log(allDives);
 		let newArray = [];
 		let otherArray = [];
 		allDives.forEach((e) => {
