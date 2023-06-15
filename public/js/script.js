@@ -9,6 +9,7 @@ const dropdown = document.getElementsByClassName("dropdown-togglerrr");
 
 const logDive = document.querySelector(".log-dive-form");
 const coordsInput = document.querySelector("#coords-input");
+const coordsInput2 = document.querySelector(".coords-input");
 
 let map;
 let mapEvent;
@@ -66,9 +67,8 @@ function _newDive() {
 function _showForm(mapE) {
 	mapEvent = mapE;
 	logDive.classList.remove("hidden");
-	console.log(mapEvent.latlng, "this map event");
+
 	coordsInput.value = mapEvent.latlng;
-	console.log(coordsInput.value, "this is the value");
 }
 
 function _renderDiveMarkers() {

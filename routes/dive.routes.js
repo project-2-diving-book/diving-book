@@ -117,7 +117,7 @@ router.post(
 
 		if (!req.file) {
 			newDive.imgDive =
-				"https://res.cloudinary.com/dcslof4ax/image/upload/v1686592088/user-folder/wxjsptzx8l5kplnay3wn.png";
+				"https://res.cloudinary.com/dcslof4ax/image/upload/v1686843478/user-folder/p6sarfts5pwi4hygwgtm.jpg";
 		} else {
 			newDive.imgDive = req.file.path;
 		}
@@ -164,8 +164,16 @@ router.post(
 	fileUploader.single("imgDive"),
 	(req, res, next) => {
 		const { id } = req.params;
-		let { divingSite, depth, duration, buddy, comments, placesToEat, imgDive } =
-			req.body;
+		let {
+			divingSite,
+			depth,
+			duration,
+			buddy,
+			comments,
+			placesToEat,
+			imgDive,
+			coords,
+		} = req.body;
 		console.log(req.body);
 
 		if (req.file) {
@@ -182,6 +190,7 @@ router.post(
 				comments,
 				placesToEat,
 				imgDive,
+				coords,
 			},
 			{ new: true }
 		)
