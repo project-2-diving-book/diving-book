@@ -2,7 +2,7 @@
 	<div class="row w-100">
 		<div class="col-3 container-fluid">
 
-			<section style="background-color:white;">
+			<section>
 				<div class="container w-100 my-5">
 					<div class="row d-flex justify-content-center align-items-center">
 						<div class="col col-md-10 col-lg-10 col-xl-10">
@@ -95,7 +95,10 @@
 
 			{{#unless diveOwnerDetails}}
 				<!-- Content for the first div (4 columns) -->
-				<div class="container-fluid shadow">
+				<div
+					class="container-fluid p-3 shadow rounded"
+					style="background-color: #99e9f29c "
+				>
 
 					<form
 						id="logDive"
@@ -262,47 +265,54 @@
 
 					</form>
 
-        </div>
-      {{/unless}}
-    </div>
-    <div class="col-9">
-      <!-- Content for the second div (8 columns) -->
-      {{#if diveOwnerDetails}}
-        <div class="col-12 justify-content-center">
-          <form
-            action="/user/user-profile/{{diveOwnerDetails.username}}"
-            method="get"
-          >
-            <button class="col-2 btn btn-primary">my dives</button>
-          </form>
-          <form
-            action="/user/user-profile/{{diveOwnerDetails.username}}/dives-to-do"
-            method="get"
-          >
-            <button class="col-2 btn btn-primary">dives to do</button>
-          </form>
-        </div>
-      {{else}}
-        <div class="col-12 justify-items-center">
-          <form
-            action="/user/user-profile/{{userIsLoggedIn.username}}"
-            method="get"
-          >
-            <button class="col-2 btn btn-primary">my dives</button>
-          </form>
-          <form
-            action="/user/user-profile/{{userIsLoggedIn.username}}/dives-to-do"
-            method="get"
-          >
-            <button class="col-2 btn btn-primary">dives to do</button>
-          </form>
-        </div>
-      {{/if}}
+				</div>
+			{{/unless}}
+		</div>
+		<div class="col-9">
+			<!-- Content for the second div (8 columns) -->
+			{{#if diveOwnerDetails}}
+				<div
+					class="container col-12 d-flex align-items-center justify-content-end"
+				>
+					<form
+						action="/user/user-profile/{{diveOwnerDetails.username}}"
+						method="get"
+					>
+						<button class="col-12 btn btn-primary">{{diveOwnerDetails.username}}
+							dives</button>
+					</form>
+					<form
+						action="/user/user-profile/{{diveOwnerDetails.username}}/dives-to-do"
+						method="get"
+					>
+						<button class="col-12 btn btn-warning">dives to do</button>
+					</form>
+
+				</div>
+			{{else}}
+				<div
+					class="container col-12 d-flex align-items-center justify-content-end"
+				>
+					<form
+						action="/user/user-profile/{{userIsLoggedIn.username}}"
+						method="get"
+					>
+						<button class="col-12 btn btn-primary">{{userIsLoggedIn.username}}
+							dives</button>
+					</form>
+					<form
+						action="/user/user-profile/{{userIsLoggedIn.username}}/dives-to-do"
+						method="get"
+					>
+						<button class="col-12 btn btn-warning">dives to do</button>
+					</form>
+				</div>
+			{{/if}}
 
 			<div class="card-container diving-list-container">
 				{{#each userDivesArr}}
 
-					<div class="card card-dive mx-3 my-3">
+					<div class="card card-dive mx-3 my-3 card-details-list">
 						{{#if imgDive}}
 							<img src="{{imgDive}}" class="card-img-top" alt="" />
 						{{else}}
@@ -315,8 +325,7 @@
 						<div class="card-body">
 							<p class="uppercase text-left">Diving Site:</p>
 							<h5 class="card-title text-left">{{divingSite}}</h5>
-							<p class="card-text">Some quick example text to build on the card
-								title and make up the bulk of the card's content.</p>
+							<p class="card-text">{{comments}}</p>
 
 							<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
 								<div class="feature-col">
@@ -340,29 +349,32 @@
 
 									</div>
 
-									<h6>
-										{{user.username}}</h6>
+									<a
+										class="text-decoration-none"
+										href="/user/user-profile/{{user.username}}"
+									>
+										{{user.username}}</a>
 								</div>
 							</div>
 
-              <div class="row g-4 row-cols-1 row-cols-lg-2">
-                <div class="feature-col">
-                  <a
-                    class="btn btn-primary"
-                    href="/diving-site-details/{{this._id}}"
-                  >View details</a>
-                </div>
-                {{#if removeToDo}}
-                  <div class="feature-col">
-                    <a
-                      class="btn btn-secondary"
-                      href="/user/user-profile/{{this._id}}/remove"
-                    >Remove to do</a>
-                  </div>
-                {{/if}}
-              </div>
-            </div>
-          </div>
+							<div class="row g-4 row-cols-1 row-cols-lg-2">
+								<div class="feature-col">
+									<a
+										class="btn btn-primary"
+										href="/diving-site-details/{{this._id}}"
+									>View details</a>
+								</div>
+								{{#if removeToDo}}
+									<div class="feature-col">
+										<a
+											class="btn btn-secondary"
+											href="/user/user-profile/{{this._id}}/remove"
+										>Remove to do</a>
+									</div>
+								{{/if}}
+							</div>
+						</div>
+					</div>
 
 				{{else}}
 

@@ -1,7 +1,10 @@
+<div class="d-flex align-items-center justify-content-center">
+	<div id="map" class="card shadow mt-5 col-5"></div>
+</div>
 <div class="card-container diving-list-container">
 	{{#each allDives}}
 
-		<div class="card card-dive">
+		<div class="card card-dive mt-5 shadow card-details-list">
 			{{#if imgDive}}
 				<img src="{{imgDive}}" class="card-img-top" alt="" />
 			{{else}}
@@ -14,8 +17,7 @@
 			<div class="card-body">
 				<p class="uppercase text-left">Diving Site:</p>
 				<h5 class="card-title text-left">{{divingSite}}</h5>
-				<p class="card-text">Some quick example text to build on the card title
-					and make up the bulk of the card's content.</p>
+				<p class="card-text">{{comments}}</p>
 
 				<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
 					<div class="feature-col">

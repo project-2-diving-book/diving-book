@@ -7,8 +7,7 @@
 				<div class="card-body">
 					<h5 class="uppercase text-left">Diving Site:</h5>
 					<h3 class="card-title text-left">{{diveDetails.divingSite}}</h3>
-					<p class="card-text">Some quick example text to build on the card
-						title and make up the bulk of the card's content.</p>
+					<p class="card-text">{{diveDetails.comments}}</p>
 
 					<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
 						<div class="feature-col">
@@ -39,7 +38,7 @@
 						<div class="feature-col">
 							<div class="flex-shrink-0 justify-content-center">
 								<img
-									src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+									src="{{diveDetails.user.imgProfile}}"
 									alt="Generic placeholder image"
 									class="img-fluid rounded-circle border border-dark border-3"
 									style="width: 50px; height:50px; background-color:aqua"
@@ -100,7 +99,7 @@
 				<img src="{{imgDive}}" class="card-img-top" alt="" />
 			{{else}}
 				<img
-					src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+					src="{{diveDetails.imgDive}}"
 					class="card-img-top"
 					alt="Fissure in Sandstone"
 				/>

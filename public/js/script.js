@@ -90,7 +90,8 @@ function _renderDiveMarkers() {
 fetch("/diving-sites/api")
 	.then((response) => response.json())
 	.then((allDives) => {
-		// console.log(allDives);
+		console.log(allDives);
+
 		let newArray = [];
 		let otherArray = [];
 		allDives.forEach((e) => {
@@ -119,10 +120,12 @@ fetch("/diving-sites/api")
 						minWidth: 100,
 						autoClose: false,
 						closeOnClick: false,
-						className: "popup",
+						className: "rounded-circle",
 					})
 				)
-				.setPopupContent("dive")
+				.setPopupContent(
+					`<a style='color:white; text-decoration:none' href="/diving-site-details/${e._id}/">${e.divingSite}</a>`
+				)
 				.openPopup();
 		});
 	});

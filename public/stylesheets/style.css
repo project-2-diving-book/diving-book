@@ -3,6 +3,10 @@
 body {
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	background-color: #e6fcf59f;
+}
+.navbar {
+	background-color: #99e9f29c !important;
 }
 
 a {
@@ -61,4 +65,9 @@ illu {
 
 .hidden {
 	display: none !important;
+}
+
+.card-details-list {
+	border-bottom-right-radius: 50px !important;
+	border-bottom-left-radius: 50px !important;
 }
