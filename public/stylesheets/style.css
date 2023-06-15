@@ -3,17 +3,19 @@
 body {
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	background-color: #e6fcf59f;
+	background-color: #47b5ff83;
 }
 .navbar {
-	background-color: #99e9f29c !important;
+	background-color: #06283d !important;
+	color: #dff6ff !important;
 }
 
-a {
-	color: #00b7ff;
+nav a {
+	color: #dff6ff !important;
 }
-a:hover {
-	color: blue;
+nav a:hover {
+	color: #dff6ff !important;
+	font-size: 20px;
 }
 h1 {
 	color: 15px;
@@ -45,6 +47,8 @@ illu {
 
 #map {
 	height: 720px;
+	border: 1px solid black;
+	border-radius: 5px;
 	/* margin-top: 500px; */
 }
 
@@ -79,6 +83,48 @@ illu {
 	border-radius: 5px;
 }
 
-.btn-warning {
+.btn-warning,
+.btn-warning:hover,
+.btn-warning:visited,
+.btn-warning:active {
 	background-color: #63e6be !important;
+	border: none !important;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:visited {
+	background-color: #256d85 !important;
+	border: none !important;
+}
+
+.card {
+	background-color: #dff6ff !important;
+}
+
+.btn-primary:hover,
+.btn-warning:hover {
+	box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5) !important;
+}
+
+.dropdown-menu {
+	background-color: #06283d !important;
+	margin-top: 10px !important;
+}
+.dropdown-item:hover {
+	color: #256d85 !important;
+}
+
+.cont-map {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+}
+.positioning-map {
+	width: 90% !important;
+	height: 90% !important;
+	grid-column-start: 1;
+	grid-column-end: 3;
+	grid-row-start: 1;
+	grid-row-end: 2;
 }

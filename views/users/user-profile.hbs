@@ -97,7 +97,7 @@
 				<!-- Content for the first div (4 columns) -->
 				<div
 					class="container-fluid p-3 shadow rounded"
-					style="background-color: #99e9f29c "
+					style="background-color:#06283d; color:#dff6ff ; border-radius:10px;"
 				>
 
 					<form
@@ -108,7 +108,7 @@
 					>
 						<h3>Log a Dive</h3>
 
-						<div class="card feature-col-4">
+						<div class="card my-1 feature-col-4">
 
 							<div class="card-body">
 								<div class="row">
@@ -123,7 +123,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card my-1">
 
 							<div class="card-body">
 								<div class="row">
@@ -147,7 +147,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card my-1">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-auto">
@@ -170,7 +170,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card my-1">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-auto">
@@ -185,7 +185,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card my-1">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-auto">
@@ -212,7 +212,7 @@
 							</div>
 						</div>
 
-						<div class="card">
+						<div class="card my-1">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-auto">
@@ -233,7 +233,7 @@
 						</div>
 
 						{{! image container---------------------------------------- }}
-						<div class="card">
+						<div class="card my-1">
 							<div class="card-body">
 								<div class="row">
 									<div class="col-auto">
@@ -312,7 +312,7 @@
 			<div class="card-container diving-list-container">
 				{{#each userDivesArr}}
 
-					<div class="card card-dive mx-3 my-3 card-details-list">
+					<div class="card card-dive mx-3 my-3 card-details-list shadow">
 						{{#if imgDive}}
 							<img src="{{imgDive}}" class="card-img-top" alt="" />
 						{{else}}
@@ -350,7 +350,7 @@
 									</div>
 
 									<a
-										class="text-decoration-none"
+										class="text-decoration-none fs-6"
 										href="/user/user-profile/{{user.username}}"
 									>
 										{{user.username}}</a>

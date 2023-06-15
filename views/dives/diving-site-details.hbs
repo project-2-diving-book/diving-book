@@ -2,14 +2,14 @@
 	<div class="row">
 		<div class="col">
 
-			<div class="card card-dive">
+			<div class="card my-5 card-dive">
 
 				<div class="card-body">
 					<h5 class="uppercase text-left">Diving Site:</h5>
 					<h3 class="card-title text-left">{{diveDetails.divingSite}}</h3>
 					<p class="card-text">{{diveDetails.comments}}</p>
 
-					<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+					<div class="row g-4 py-1 row-cols-1 row-cols-lg-2">
 						<div class="feature-col">
 							<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
 							<h6>Depth: {{diveDetails.depth}}m</h6></div>
@@ -21,7 +21,9 @@
 						</div>
 
 					</div>
-					<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+
+					<hr class="hr-details" />
+					<div class="row g-4 py-1 row-cols-1 row-cols-lg-2">
 						<div class="feature-col">
 							<div class="flex-shrink-0 justify-content-center">
 								<img
@@ -32,7 +34,10 @@
 								/>
 							</div>
 							{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
-							<a href="/user/user-profile/{{diveDetails.user.username}}">
+							<a
+								class="text-decoration-none fs-6"
+								href="/user/user-profile/{{diveDetails.user.username}}"
+							>
 								{{diveDetails.user.username}}</a>
 						</div>
 						<div class="feature-col">
@@ -52,6 +57,7 @@
 								{{diveDetails.user.username}}</a> --}}
 						</div>
 					</div>
+					<hr class="hr-details justify-self-center" />
 					<div class="row">
 						<div class="col">
 							<h6>Comments:</h6>
@@ -96,11 +102,11 @@
 		</div>
 		<div class="col">
 			{{#if imgDive}}
-				<img src="{{imgDive}}" class="card-img-top" alt="" />
+				<img src="{{imgDive}}" class="card-img-top my-5" alt="" />
 			{{else}}
 				<img
 					src="{{diveDetails.imgDive}}"
-					class="card-img-top"
+					class="card-img-top my-5"
 					alt="Fissure in Sandstone"
 				/>
 			{{/if}}

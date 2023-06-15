@@ -1,7 +1,7 @@
-<div class="d-flex align-items-center justify-content-center">
-	<div id="map" class="card shadow mt-5 col-5"></div>
-</div>
-<div class="card-container diving-list-container">
+<div class="card-container diving-list-container cont-map">
+
+	<div id="map" class="card shadow mr-5 my-5 col-5 positioning-map"></div>
+
 	{{#each allDives}}
 
 		<div class="card card-dive mt-5 shadow card-details-list">
@@ -16,10 +16,10 @@
 			{{/if}}
 			<div class="card-body">
 				<p class="uppercase text-left">Diving Site:</p>
-				<h5 class="card-title text-left">{{divingSite}}</h5>
+				<h5 class="card-title my-2 text-left">{{divingSite}}</h5>
 				<p class="card-text">{{comments}}</p>
 
-				<div class="row g-4 py-1 row-cols-1 row-cols-lg-3">
+				<div class="row g-4 my-3 py-1 row-cols-1 row-cols-lg-3">
 					<div class="feature-col">
 						<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
 						<h6>{{depth}}m</h6></div>
@@ -39,7 +39,10 @@
 							/>
 						</div>
 						{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
-						<a href="/user/user-profile/{{user.username}}">
+						<a
+							class="text-decoration-none fs-6"
+							href="/user/user-profile/{{user.username}}"
+						>
 							{{user.username}}</a>
 					</div>
 				</div>
