@@ -1,185 +1,185 @@
 <div class="container d-flex align-items-center justify-content-center my-5">
-	<div class="row col-7">
+  <div class="row col-7">
 
-		<form
-			method="post"
-			action="/diving-sites/{{diveFromDB._id}}/edit"
-			enctype="multipart/form-data"
-		>
-			<h3>Edit a Dive</h3>
+    <form
+      method="post"
+      action="/diving-sites/{{diveFromDB._id}}/edit"
+      enctype="multipart/form-data"
+    >
+      <h3>Edit a Dive</h3>
 
-			<div class="card feature-col-4">
+      <div class="card feature-col-4">
 
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
-						</div>
-						<div class="form-outline col">
-							<input
-								type="text"
-								name="divingSite"
-								class="form-control"
-								value="{{diveFromDB.divingSite}}"
-							/>
-							<label class="form-label" for="form6Example3">Diving Site</label>
-						</div>
-					</div>
-				</div>
-			</div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+            </div>
+            <div class="form-outline col">
+              <input
+                type="text"
+                name="divingSite"
+                class="form-control"
+                value="{{diveFromDB.divingSite}}"
+              />
+              <label class="form-label" for="form6Example3">Diving Site</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="card my-2">
+      <div class="card my-2">
 
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
 
-						</div>
-						<div class="form-outline col">
-							<input
-								type="number"
-								name="depth"
-								min="0"
-								class="form-control"
-								value="{{diveFromDB.depth}}"
-							/>
-							<label class="form-label" for="form6Example3">Depth</label>
-						</div>
-					</div>
-				</div>
-			</div>
+            </div>
+            <div class="form-outline col">
+              <input
+                type="number"
+                name="depth"
+                min="0"
+                class="form-control"
+                value="{{diveFromDB.depth}}"
+              />
+              <label class="form-label" for="form6Example3">Depth</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="card my-2">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-							<h6>min</h6>
-						</div>
-						<div class="form-outline col">
-							<input
-								type="number"
-								name="duration"
-								min="0"
-								class="form-control"
-								value="{{diveFromDB.duration}}"
-							/>
-							<label class="form-label" for="form6Example3">Duration</label>
-						</div>
-					</div>
-				</div>
-			</div>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+              <h6>min</h6>
+            </div>
+            <div class="form-outline col">
+              <input
+                type="number"
+                name="duration"
+                min="0"
+                class="form-control"
+                value="{{diveFromDB.duration}}"
+              />
+              <label class="form-label" for="form6Example3">Duration</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="card my-2">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-file-person" style="font-size: 2rem;"></i>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-file-person" style="font-size: 2rem;"></i>
 
-						</div>
-						<div class="form-outline col">
-							<input
-								type="text"
-								name="buddy"
-								class="form-control"
-								value="{{diveFromDB.buddy}}"
-							/>
-							<label class="form-label" for="form6Example3">Buddy</label>
-						</div>
-					</div>
-				</div>
-			</div>
+            </div>
+            <div class="form-outline col">
+              <input
+                type="text"
+                name="buddy"
+                class="form-control"
+                value="{{diveFromDB.buddy}}"
+              />
+              <label class="form-label" for="form6Example3">Buddy</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="card my-2">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-chat-left-text" style="font-size: 2rem;"></i>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-chat-left-text" style="font-size: 2rem;"></i>
 
-						</div>
-						<div class="form-outline col">
-							<textarea
-								name="comments"
-								cols="30"
-								rows="6"
-								class="form-control"
-							>{{diveFromDB.comments}}
-							</textarea>
-							<label class="form-label" for="form6Example3">Comments</label>
-						</div>
-					</div>
-				</div>
-			</div>
+            </div>
+            <div class="form-outline col">
+              <textarea
+                name="comments"
+                cols="30"
+                rows="6"
+                class="form-control"
+              >{{diveFromDB.comments}}
+              </textarea>
+              <label class="form-label" for="form6Example3">Comments</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<div class="card my-2">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-apple" style="font-size: 2rem;"></i>
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-apple" style="font-size: 2rem;"></i>
 
-						</div>
-						<div class="form-outline col">
-							<input
-								type="text"
-								name="placesToEat"
-								class="form-control"
-								value="{{diveFromDB.placesToEat}}"
-							/>
-							<label class="form-label" for="form6Example3">Places to Eat nearby</label>
-						</div>
-					</div>
-				</div>
-			</div>
+            </div>
+            <div class="form-outline col">
+              <input
+                type="text"
+                name="placesToEat"
+                class="form-control"
+                value="{{diveFromDB.placesToEat}}"
+              />
+              <label class="form-label" for="form6Example3">Places to Eat nearby</label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			{{! image container---------------------------------------- }}
-			<div class="card my-2">
-				<div class="card-body">
-					<div class="row">
-						<div class="col-auto">
-							<i class="bi bi-image" style="font-size: 2rem;"></i>
-						</div>
-						<div class="form-outline col">
-							<div class="col-auto">
-								<img
-									id="image-preview"
-									src=""
-									style="width: auto; height: 8rem; display:none;"
-								/>
-							</div>
-							<input
-								type="file"
-								name="imgDive"
-								onchange="previewImage(event)"
-								class="form-control form-control-lg"
-							/>
-							<label class="form-label" for="form6Example3">Image </label>
-						</div>
-					</div>
-				</div>
-			</div>
+      {{! image container---------------------------------------- }}
+      <div class="card my-2">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-auto">
+              <i class="bi bi-image" style="font-size: 2rem;"></i>
+            </div>
+            <div class="form-outline col">
+              <div class="col-auto">
+                <img
+                  id="image-preview"
+                  src=""
+                  style="width: auto; height: 8rem; display:none;"
+                />
+              </div>
+              <input
+                type="file"
+                name="imgDive"
+                onchange="previewImage(event)"
+                class="form-control form-control-lg"
+              />
+              <label class="form-label" for="form6Example3">Image </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-			{{! imageeeee }}
+      {{! imageeeee }}
 
-			<button class="btn btn-primary" type="submit"> Submit Edit </button>
-			<a
-				class="btn btn-secondary"
-				href="/diving-site-details/{{diveFromDB._id}}"
-			>Cancel edit</a>
+      <button class="btn btn-primary" type="submit"> Submit Edit </button>
+      <a
+        class="btn btn-secondary"
+        href="/diving-site-details/{{diveFromDB._id}}"
+      >Cancel edit</a>
 
-		</form>
+    </form>
 
-	</div>
-	<div class="rounded col-9 my-5 mx-5 d-flex align-items-center">
-		<img style="width:100%" src="{{diveFromDB.imgDive}}" alt="diving photo" />
-	</div>
+  </div>
+  <div class="rounded col-9 my-5 mx-5 d-flex align-items-center">
+    <img style="width:100%" src="{{diveFromDB.imgDive}}" alt="diving photo" />
+  </div>
 </div>
 
 <script>
-	function previewImage(event) { const imagePreview =
-	document.getElementById("image-preview"); const file = event.target.files[0];
-	if (file) { const reader = new FileReader(); reader.onload = function(e) {
-	imagePreview.src = e.target.result; imagePreview.style.display = "block"; };
-	reader.readAsDataURL(file); } else { imagePreview.src = "";
-	imagePreview.style.display = "none"; } }
+  function previewImage(event) { const imagePreview =
+  document.getElementById("image-preview"); const file = event.target.files[0];
+  if (file) { const reader = new FileReader(); reader.onload = function(e) {
+  imagePreview.src = e.target.result; imagePreview.style.display = "block"; };
+  reader.readAsDataURL(file); } else { imagePreview.src = "";
+  imagePreview.style.display = "none"; } }
 </script>

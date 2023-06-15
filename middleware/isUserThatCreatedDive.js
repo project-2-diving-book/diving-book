@@ -1,5 +1,7 @@
 const Dive = require("../models/Dive.model");
 
+//// Function to check is user created a dive
+
 module.exports = (req, res, next) => {
   const currentUserEmail = req.session.currentUser.email;
   const diveId = req.params.id;
@@ -11,13 +13,11 @@ module.exports = (req, res, next) => {
       if (currentUserEmail === diveUserEmail) {
         next();
       } else {
-        return res
-          .status(400)
-          .render("dives/diving-site-details", {
-            diveDetails,
-            userIsLoggedIn: req.session.currentUser,
-            errorMessage: "Only the user that created this dive can modify it",
-          });
+        return res.status(400).render("dives/diving-site-details", {
+          diveDetails,
+          userIsLoggedIn: req.session.currentUser,
+          errorMessage: "Only the user that created this dive can modify it",
+        });
       }
     })
     .catch((error) => {

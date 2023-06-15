@@ -10,17 +10,17 @@ const isLoggedIn = require("../middleware/isLoggedIn");
 const fileUploader = require("../config/cloudinary.config");
 
 router.get(
-	"/user-profile/:username",
-	isLoggedIn,
+  "/user-profile/:username",
+  isLoggedIn,
 
-	(req, res, next) => {
-		const username = req.session.currentUser.username;
-		const diveOwner = req.params.username;
-		let userIsLoggedIn = req.session.currentUser;
-		let diveOwnerDetails = null;
-		let userDivesArr = [];
-		if (username === diveOwner) {
-			User.findOne({ username: username })
+  (req, res, next) => {
+    const username = req.session.currentUser.username;
+    const diveOwner = req.params.username;
+    let userIsLoggedIn = req.session.currentUser;
+    let diveOwnerDetails = null;
+    let userDivesArr = [];
+    if (username === diveOwner) {
+      User.findOne({ username: username })
 
         .then((userDBIsLoggedIn) => {
           userIsLoggedIn = userDBIsLoggedIn;
@@ -35,7 +35,7 @@ router.get(
 
           res.render("users/user-profile", {
             userDivesArr,
-            userIsLoggedIn
+            userIsLoggedIn,
           });
         })
         .catch((error) => {
@@ -47,67 +47,67 @@ router.get(
         .then((userDB) => {
           diveOwnerDetails = userDB;
 
-					return Dive.find().populate("user");
-				})
-				.then((allDives) => {
-					allDives.forEach((dive) => {
-						if (dive.user.username === diveOwner) {
-							userDivesArr.push(dive);
-						}
-					});
-					res.render("users/user-profile", {
-						userDivesArr,
-						userIsLoggedIn,
-						diveOwnerDetails,
-					});
-				})
-				.catch((error) => {
-					console.log("Error finding user in DB", error);
-					next(error);
-				});
-		}
-	}
+          return Dive.find().populate("user");
+        })
+        .then((allDives) => {
+          allDives.forEach((dive) => {
+            if (dive.user.username === diveOwner) {
+              userDivesArr.push(dive);
+            }
+          });
+          res.render("users/user-profile", {
+            userDivesArr,
+            userIsLoggedIn,
+            diveOwnerDetails,
+          });
+        })
+        .catch((error) => {
+          console.log("Error finding user in DB", error);
+          next(error);
+        });
+    }
+  }
 );
 
 router.get("/:username/edit", isLoggedIn, (req, res, next) => {
-	const { username } = req.params;
-	User.findOne({ username: username })
-		.then((userDetails) => {
-			res.render("users/user-details-edit", {
-				userDetails,
-				userIsLoggedIn: req.session.currentUser,
-			});
-		})
-		.catch((error) => {
-			console.log("Error finding user in the DB", error);
-			next(error);
-		});
+  const { username } = req.params;
+  User.findOne({ username: username })
+    .then((userDetails) => {
+      res.render("users/user-details-edit", {
+        userDetails,
+        userIsLoggedIn: req.session.currentUser,
+      });
+    })
+    .catch((error) => {
+      console.log("Error finding user in the DB", error);
+      next(error);
+    });
 });
 
 router.post(
-	"/:username/edit",
-	isLoggedIn,
-	fileUploader.single("imgProfile"),
-	(req, res, next) => {
-		const userName = req.params.username;
-		let { firstName, lastName, divingLevel, imgProfile } = req.body;
+  "/:username/edit",
+  isLoggedIn,
+  fileUploader.single("imgProfile"),
+  (req, res, next) => {
+    const userName = req.params.username;
+    let { firstName, lastName, divingLevel, imgProfile } = req.body;
 
-		if (req.file) {
-			imgProfile = req.file.path;
-		}
-		User.findOneAndUpdate(
-			{ username: userName },
-			{ firstName, lastName, divingLevel, imgProfile },
-			{ new: true }
-		)
-			.then((userInfoUpdated) => {
-				res.redirect(`/user/user-profile/${userInfoUpdated.username}`);
-			})
-			.catch((error) => {
-				console.log("this is an error on update user information", error);
-				next(error);
-			});
-	}
+    if (req.file) {
+      imgProfile = req.file.path;
+    }
+    User.findOneAndUpdate(
+      { username: userName },
+      { firstName, lastName, divingLevel, imgProfile },
+      { new: true }
+    )
+      .then((userInfoUpdated) => {
+        res.redirect(`/user/user-profile/${userInfoUpdated.username}`);
+      })
+      .catch((error) => {
+        console.log("this is an error on update user information", error);
+        next(error);
+      });
+  }
 );
 
 router.get("/user-profile/:divetodoId/remove", isLoggedIn, (req, res, next) => {
@@ -123,8 +123,8 @@ router.get("/user-profile/:divetodoId/remove", isLoggedIn, (req, res, next) => {
       userDetails.divesToDo.splice(diveToRemoveIndex, 1);
       return User.findOneAndUpdate(
         { username: username },
-        {divesToDo: userDetails.divesToDo})
-    .then(() => {
+        { divesToDo: userDetails.divesToDo }
+      ).then(() => {
         res.redirect(`/user/user-profile/${username}/dives-to-do`);
       });
     })

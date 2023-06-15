@@ -1,71 +1,70 @@
 <div class="card-container diving-list-container cont-map">
 
-	<div id="map" class="card shadow mr-5 my-5 col-5 positioning-map"></div>
+  <div id="map" class="card shadow mr-5 my-5 col-5 positioning-map"></div>
 
-	{{#each allDives}}
+  {{#each allDives}}
 
-		<div class="card card-dive mt-5 shadow card-details-list">
-			{{#if imgDive}}
-				<img src="{{imgDive}}" class="card-img-top" alt="" />
-			{{else}}
-				<img
-					src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
-					class="card-img-top"
-					alt="Fissure in Sandstone"
-				/>
-			{{/if}}
-			<div class="card-body">
-				<p class="uppercase text-left">Diving Site:</p>
-				<h5 class="card-title my-2 text-left">{{divingSite}}</h5>
-				<p class="card-text">{{comments}}</p>
+    <div class="card card-dive mt-5 shadow card-details-list">
+      {{#if imgDive}}
+        <img src="{{imgDive}}" class="card-img-top" alt="" />
+      {{else}}
+        <img
+          src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp"
+          class="card-img-top"
+          alt="Fissure in Sandstone"
+        />
+      {{/if}}
+      <div class="card-body">
+        <p class="uppercase text-left">Diving Site:</p>
+        <h5 class="card-title my-2 text-left">{{divingSite}}</h5>
+        <p class="card-text">{{comments}}</p>
 
-				<div class="row g-4 my-3 py-1 row-cols-1 row-cols-lg-3">
-					<div class="feature-col">
-						<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
-						<h6>{{depth}}m</h6></div>
-					<div class="feature-col">
+        <div class="row g-4 my-3 py-1 row-cols-1 row-cols-lg-3">
+          <div class="feature-col">
+            <i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+            <h6>{{depth}}m</h6></div>
+          <div class="feature-col">
 
-						<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-						<h6>
-							{{duration}}min</h6>
-					</div>
-					<div class="feature-col">
-						<div class="flex-shrink-0 justify-content-center">
-							<img
-								src="{{user.imgProfile}}"
-								alt="Generic placeholder image"
-								class="img-fluid rounded-circle border border-dark border-3"
-								style="width: 50px;"
-							/>
-						</div>
-						{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
-						<a
-							class="text-decoration-none fs-6"
-							href="/user/user-profile/{{user.username}}"
-						>
-							{{user.username}}</a>
-					</div>
-				</div>
+            <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+            <h6>
+              {{duration}}min</h6>
+          </div>
+          <div class="feature-col">
+            <div class="flex-shrink-0 justify-content-center">
+              <img
+                src="{{user.imgProfile}}"
+                alt="Generic placeholder image"
+                class="img-fluid rounded-circle border border-dark border-3"
+                style="width: 50px;"
+              />
+            </div>
+            <a
+              class="text-decoration-none fs-6"
+              href="/user/user-profile/{{user.username}}"
+            >
+              {{user.username}}</a>
+          </div>
+        </div>
 
-				<div class="row g-4 row-cols-1 row-cols-lg-2">
-					<div class="feature-col">
-						<a
-							class="btn btn-primary"
-							href="/diving-site-details/{{this._id}}"
-						>View details</a>
-					</div>
-					<div class="feature-col">
-						<form action="/diving-sites/{{_id}}/dive-to-do" method="post">
-							<button class="btn btn-warning">Add dive to do</button>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="row g-4 row-cols-1 row-cols-lg-2">
+          <div class="feature-col">
+            <a
+              class="btn btn-primary"
+              href="/diving-site-details/{{this._id}}"
+            >View details</a>
+          </div>
+          <div class="feature-col">
+            <form action="/diving-sites/{{_id}}/dive-to-do" method="post">
+              <button class="btn btn-warning">Add dive to do</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
-	{{else}}
-		<p>There are not diving sites yes</p>
-		<a href="/diving-sites/create">Log your first one</a>
+  {{else}}
+    <p>There are not diving sites yes</p>
+    <a href="/diving-sites/create">Log your first one</a>
 
-	{{/each}}
+  {{/each}}
 </div>

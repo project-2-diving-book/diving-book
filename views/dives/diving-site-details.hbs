@@ -1,117 +1,109 @@
 <div class="container text-center">
-	<div class="row">
-		<div class="col">
+  <div class="row">
+    <div class="col">
 
-			<div class="card my-5 card-dive">
+      <div class="card my-5 card-dive">
 
-				<div class="card-body">
-					<h5 class="uppercase text-left">Diving Site:</h5>
-					<h3 class="card-title text-left">{{diveDetails.divingSite}}</h3>
-					<p class="card-text">{{diveDetails.comments}}</p>
+        <div class="card-body">
+          <h5 class="uppercase text-left">Diving Site:</h5>
+          <h3 class="card-title text-left">{{diveDetails.divingSite}}</h3>
+          <p class="card-text">{{diveDetails.comments}}</p>
 
-					<div class="row g-4 py-1 row-cols-1 row-cols-lg-2">
-						<div class="feature-col">
-							<i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
-							<h6>Depth: {{diveDetails.depth}}m</h6></div>
-						<div class="feature-col">
+          <div class="row g-4 py-1 row-cols-1 row-cols-lg-2">
+            <div class="feature-col">
+              <i class="bi bi-arrow-bar-down" style="font-size: 2rem;"></i>
+              <h6>Depth: {{diveDetails.depth}}m</h6></div>
+            <div class="feature-col">
 
-							<i class="bi bi-clock-history" style="font-size: 2rem;"></i>
-							<h6>
-								{{diveDetails.duration}}min</h6>
-						</div>
+              <i class="bi bi-clock-history" style="font-size: 2rem;"></i>
+              <h6>
+                {{diveDetails.duration}}min</h6>
+            </div>
 
-					</div>
+          </div>
 
-					<hr class="hr-details" />
-					<div class="row g-4 py-1 row-cols-1 row-cols-lg-2">
-						<div class="feature-col">
-							<div class="flex-shrink-0 justify-content-center">
-								<img
-									src="{{diveDetails.user.imgProfile}}"
-									alt="Generic placeholder image"
-									class="img-fluid rounded-circle border border-dark border-3"
-									style="width: 50px;"
-								/>
-							</div>
-							{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
-							<a
-								class="text-decoration-none fs-6"
-								href="/user/user-profile/{{diveDetails.user.username}}"
-							>
-								{{diveDetails.user.username}}</a>
-						</div>
-						<div class="feature-col">
-							<div class="flex-shrink-0 justify-content-center">
-								<img
-									src="{{diveDetails.user.imgProfile}}"
-									alt="Generic placeholder image"
-									class="img-fluid rounded-circle border border-dark border-3"
-									style="width: 50px; height:50px; background-color:aqua"
-								/>
-							</div>
+          <hr class="hr-details" />
+          <div class="row g-4 py-1 row-cols-1 row-cols-lg-2">
+            <div class="feature-col">
+              <div class="flex-shrink-0 justify-content-center">
+                <img
+                  src="{{diveDetails.user.imgProfile}}"
+                  alt="Generic placeholder image"
+                  class="img-fluid rounded-circle border border-dark border-3"
+                  style="width: 50px;"
+                />
+              </div>
 
-							<h6>Buddy</h6>
-							<p>{{diveDetails.buddy}}</p>
-							{{! <i class="bi bi-file-person" style="font-size: 2rem;"></i> }}
-							{{!-- <a href="/user/user-profile/{{diveDetails.user.username}}">
-								{{diveDetails.user.username}}</a> --}}
-						</div>
-					</div>
-					<hr class="hr-details justify-self-center" />
-					<div class="row">
-						<div class="col">
-							<h6>Comments:</h6>
-							<p>{{diveDetails.comments}}</p>
-						</div>
-						<div class="col">
-							<h6>Places to Eat nearby:</h6>
-							<p>{{diveDetails.placesToEat}}</p>
-						</div>
-					</div>
+              <a
+                class="text-decoration-none fs-6"
+                href="/user/user-profile/{{diveDetails.user.username}}"
+              >
+                {{diveDetails.user.username}}</a>
+            </div>
+            <div class="feature-col">
+              <div class="flex-shrink-0 justify-content-center">
+                <img
+                  src="{{diveDetails.user.imgProfile}}"
+                  alt="Generic placeholder image"
+                  class="img-fluid rounded-circle border border-dark border-3"
+                  style="width: 50px; height:50px; background-color:aqua"
+                />
+              </div>
 
-					<div class="row g-4 row-cols-1 row-cols-lg-2">
-						<div class="feature-col">
-							<form
-								action="/diving-sites/{{diveDetails._id}}/edit"
-								method="GET"
-							>
-								<button class="btn btn-secondary" type="submit">Edit</button>
-							</form>
-						</div>
-						<div class="feature-col">
-							<form
-								action="/diving-sites/{{diveDetails._id}}/delete"
-								method="POST"
-							>
-								<button class="btn btn-secondary" type="submit">Delete</button>
-							</form>
-						</div>
-						{{!-- <div class="feature-col">
-						<form action="/diving-sites/{{this._id}}/delete" method="POST">
-							<button class="btn btn-secondary">Delete</button>
-						</form>
-					</div> --}}
-					</div>
-				</div>
+              <h6>Buddy</h6>
+              <p>{{diveDetails.buddy}}</p>
+            </div>
+          </div>
+          <hr class="hr-details justify-self-center" />
+          <div class="row">
+            <div class="col">
+              <h6>Comments:</h6>
+              <p>{{diveDetails.comments}}</p>
+            </div>
+            <div class="col">
+              <h6>Places to Eat nearby:</h6>
+              <p>{{diveDetails.placesToEat}}</p>
+            </div>
+          </div>
 
-				{{#if errorMessage}}
-					<p class="error">{{errorMessage}}</p>
-				{{/if}}
+          <div class="row g-4 row-cols-1 row-cols-lg-2">
+            <div class="feature-col">
+              <form
+                action="/diving-sites/{{diveDetails._id}}/edit"
+                method="GET"
+              >
+                <button class="btn btn-secondary" type="submit">Edit</button>
+              </form>
+            </div>
+            <div class="feature-col">
+              <form
+                action="/diving-sites/{{diveDetails._id}}/delete"
+                method="POST"
+              >
+                <button class="btn btn-secondary" type="submit">Delete</button>
+              </form>
+            </div>
+          </div>
+        </div>
 
-			</div>
-		</div>
-		<div class="col">
-			{{#if imgDive}}
-				<img src="{{imgDive}}" class="card-img-top my-5" alt="" />
-			{{else}}
-				<img
-					src="{{diveDetails.imgDive}}"
-					class="card-img-top my-5"
-					alt="Fissure in Sandstone"
-				/>
-			{{/if}}
-		</div>
-	</div>
+        {{#if errorMessage}}
+          <p class="error">{{errorMessage}}</p>
+        {{/if}}
+
+      </div>
+    </div>
+    <div class="col">
+      {{#if imgDive}}
+        <img src="{{imgDive}}" class="card-img-top my-5" alt="" />
+      {{else}}
+        <img
+          src="{{diveDetails.imgDive}}"
+          class="card-img-top my-5"
+          alt="Fissure in Sandstone"
+        />
+      {{/if}}
+    </div>
+  </div>
 </div>
 
 <hr />
