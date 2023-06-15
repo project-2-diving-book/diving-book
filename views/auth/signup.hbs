@@ -127,6 +127,9 @@
 										</div>
 
 									</div>
+									{{#if errorMessage}}
+										<p class="error">{{errorMessage}}</p>
+									{{/if}}
 
 									<div class="d-flex justify-content-end pt-3">
 										<button type="reset" class="btn btn-light btn-lg">Reset all</button>
@@ -143,9 +146,6 @@
 				</div>
 			</div>
 		</div>
-		{{#if errorMessage}}
-			<p class="error">{{errorMessage}}</p>
-		{{/if}}
 	</form>
 
 </section>

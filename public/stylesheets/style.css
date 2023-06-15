@@ -71,3 +71,10 @@ illu {
 	border-bottom-right-radius: 50px !important;
 	border-bottom-left-radius: 50px !important;
 }
+.error {
+	padding: 1rem;
+	font-weight: bold;
+	border: 1px solid rgb(245, 177, 50);
+	background-color: rgb(255, 213, 135);
+	border-radius: 5px;
+}
