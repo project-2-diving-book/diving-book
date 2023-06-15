@@ -90,35 +90,28 @@ function _renderDiveMarkers() {
 fetch("/diving-sites/api")
 	.then((response) => response.json())
 	.then((allDives) => {
-		console.log(allDives);
+		// console.log(allDives);
 		let newArray = [];
 		let otherArray = [];
 		allDives.forEach((e) => {
-			if (e.coords) {
-				newArray.push(e.coords);
-			}
-		});
-		newArray.forEach((e) => {
 			const regex = /LatLng\(([^,]+), ([^)]+)\)/;
-			const matches = e.match(regex);
+			const matches = e.coords.match(regex);
+			const image = e.user.imgProfile;
+			let coordinates;
 
 			if (matches && matches.length === 3) {
 				const latitude = parseFloat(matches[1]);
 				const longitude = parseFloat(matches[2]);
 
-				const coordinates = [latitude, longitude];
-				otherArray.push(coordinates);
+				coordinates = [latitude, longitude];
+				// console.log(coordinates);
 			}
-		});
-		console.log(allDives);
 
-		otherArray.forEach((e) => {
 			const myIcon = L.icon({
-				iconUrl: "https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp",
+				iconUrl: image,
 				iconSize: [50, 50],
 			});
-			L.marker(e, { icon: myIcon })
-
+			L.marker(coordinates, { icon: myIcon })
 				.addTo(map)
 				.bindPopup(
 					L.popup({
