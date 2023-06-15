@@ -8,7 +8,10 @@
 
 # FUNCTIONALITY
 
-## User that are not logged in:
+## User that is not logged in:
+
+-   Singup
+-   Login/logout
 
 -   READ functionality for diving-sites list and diving-site details.
 
@@ -17,4 +20,7 @@
 -   CREATE functionality for dives.
 -   READ functionality for diving-sites list, diving-site details, 
     user profile, other users profile.
--   UPDATE functionality for details only of the dives that he created and 
+-   UPDATE functionality for dives details ( only dives created by same user ) and user details.
+-   DELETE functionality for dives ( only dives created by same user )
+
+-   MAP functionality to select location when creating a dive

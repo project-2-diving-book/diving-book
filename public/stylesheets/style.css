@@ -62,3 +62,11 @@ illu {
 .hidden {
 	display: none !important;
 }
+
+.error {
+	padding: 1rem;
+	font-weight: bold;
+	border: 1px solid rgb(245, 177, 50);
+	background-color: rgb(255, 213, 135);
+	border-radius: 5px;
+  }
