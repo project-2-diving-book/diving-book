@@ -78,3 +78,7 @@ illu {
 	background-color: rgb(255, 213, 135);
 	border-radius: 5px;
 }
+
+.btn-warning {
+	background-color: #63e6be !important;
+}
