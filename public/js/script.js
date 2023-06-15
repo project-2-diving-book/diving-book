@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // const dropdown = document.getElementsByClassName("dropdown-togglerrr");
-
+window.addEventListener("click", (e) => {
+	console.log(e);
+});
 const logDive = document.querySelector(".log-dive-form");
 const coordsInput = document.querySelector("#coords-input");
 
@@ -109,9 +111,15 @@ fetch("/diving-sites/api")
 				otherArray.push(coordinates);
 			}
 		});
+		console.log(allDives);
 
 		otherArray.forEach((e) => {
-			L.marker(e)
+			const myIcon = L.icon({
+				iconUrl: "https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp",
+				iconSize: [50, 50],
+			});
+			L.marker(e, { icon: myIcon })
+
 				.addTo(map)
 				.bindPopup(
 					L.popup({
@@ -125,9 +133,6 @@ fetch("/diving-sites/api")
 				.setPopupContent("dive")
 				.openPopup();
 		});
-	})
-	.catch((error) => {
-		console.error("Error:", error);
 	});
 
 ///////////////////////////////////////////////////

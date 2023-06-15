@@ -30,21 +30,33 @@ router.get("/diving-sites/api", (req, res, next) => {
 
 router.get("/diving-sites", (req, res, next) => {
 	Dive.find()
-
 		.then((allDives) => {
-			// res.json(allDives);
-			res.render("dives/dives-list", {
-				allDives,
-				userIsLoggedIn: req.session.currentUser,
-			});
+			const { currentUser } = req.session;
+			res.render("dives/dives-list", { allDives, userIsLoggedIn: currentUser });
 		})
-
 		.catch((error) => {
 			console.log("Error on getting the list of dives", error);
 			next(error);
 		});
 });
-///////////////   Displaying Diving Site Details
+
+// router.get("/diving-sites", (req, res, next) => {
+// 	Dive.find()
+
+// 		.then((allDives) => {
+// 			// res.json(allDives);
+// 			res.render("dives/dives-list", {
+// 				allDives,
+// 				userIsLoggedIn: req.session.currentUser,
+// 			});
+// 		})
+
+// 		.catch((error) => {
+// 			console.log("Error on getting the list of dives", error);
+// 			next(error);
+// 		});
+// });
+// ///////////////   Displaying Diving Site Details
 
 router.get("/diving-site-details/:id", (req, res, next) => {
 	const { id } = req.params;
@@ -213,21 +225,21 @@ router.post(
 		const userEmail = req.session.currentUser.email;
 		let diveToDo = {};
 
-    Dive.findById(diveId)
-      .then((diveFromDB) => {
-        diveToDo = diveFromDB;
-        return User.findOne({ email: userEmail });
-      })
-      .then((userFromDB) => {
-        userFromDB.divesToDo.push(diveToDo);
-        userFromDB.save();
-        res.redirect("/diving-sites");
-      })
-      .catch((error) => {
-        console.log("Error finding user in DB", error);
-        next(error);
-      });
-  }
+		Dive.findById(diveId)
+			.then((diveFromDB) => {
+				diveToDo = diveFromDB;
+				return User.findOne({ email: userEmail });
+			})
+			.then((userFromDB) => {
+				userFromDB.divesToDo.push(diveToDo);
+				userFromDB.save();
+				res.redirect("/diving-sites");
+			})
+			.catch((error) => {
+				console.log("Error finding user in DB", error);
+				next(error);
+			});
+	}
 );
 
 module.exports = router;
