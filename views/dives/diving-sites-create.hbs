@@ -1,7 +1,9 @@
-<div class="container d-flex">
-	<div class="row col-6">
+<div class="container-fluid d-flex">
+	<div class="row col-4" id="log-dive-form">
 
 		<form
+			id="log-dive-form"
+			class="log-dive-form hidden"
 			method="post"
 			action="/diving-sites/create"
 			enctype="multipart/form-data"
@@ -54,6 +56,26 @@
 								class="form-control"
 							/>
 							<label class="form-label" for="form6Example3">Duration</label>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-auto">
+							<i class="bi bi-geo-alt" style="font-size: 2rem;"></i>
+
+						</div>
+						<div class="form-outline col">
+							<input
+								type="object"
+								name="coords"
+								class="form-control"
+								id="coords-input"
+							/>
+							<label class="form-label" for="form6Example3">Coords</label>
 						</div>
 					</div>
 				</div>
@@ -140,12 +162,10 @@
 		</form>
 
 	</div>
-	<div class="my-5">
-		<img src="/images/medusa.png" alt="woman diving with medusas" />
+	<div class="col-8 my-5">
+		<div id="map"></div>
 	</div>
 </div>
-
-<div id="map"></div>
 
 <script>
 	function previewImage(event) { const imagePreview =
@@ -155,3 +175,9 @@
 	reader.readAsDataURL(file); } else { imagePreview.src = "";
 	imagePreview.style.display = "none"; } }
 </script>
+{{!-- 
+<script>
+	// Retrieve the folderArray passed from the server-side var folderArray =
+	JSON.parse('{{json allDives}}'); // Now you can work with the folderArray
+	console.log(allDives);
+</script> --}}
