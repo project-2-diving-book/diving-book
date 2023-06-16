@@ -1,19 +1,15 @@
-# DivingBook
+# DIVINGBOOK
 
 ## DESCRIPTION:
 
-<br>
-
-### DiveBook is a web application for divers to 
-### have an account, log their dives and share their experiences.
-
-<br>
+DiveBook is a web application for divers to 
+have an account, log their dives and share their experiences.
 
 ## TOOLS USED:
 
 <br>
 
--   `JavaScript`, `Express`, `NodeJS`, `hbs`, `MongoDB`, `bootstrap`, `CSS`
+-   `JavaScript`, `Express`, `NodeJS`, `Handlebars`, `MongoDB`, `bootstrap`, `CSS`
 -   `Cloudinary` to store images 
 -   `Adatable` to deploy project
 
@@ -54,7 +50,7 @@
 
 -   Singup
 
--   Login/logout
+-   Login
 
 -   READ functionality for diving-sites list and diving-site details.
 
@@ -79,6 +75,21 @@
 <br>
 
 -   Add dives from other users to your DivesToDo list
+
+<br>
+
+## INSTRUCTIONS TO RUN THIS APP ON YOUR COMPUTER:
+
+<br>
+
+-   Install dependencies: `npm install`
+-   Create `.env` file and add enviroment variables:
+    - CLOUDINARY_NAME
+    - CLOUDINARY_KEY
+    - CLOUDINARY_SECRET
+
+    - Create a `Cloudinary account`, set the previous variables with the value from your account.
+-   Run the application with `npm run dev`
 
 <br>
 
