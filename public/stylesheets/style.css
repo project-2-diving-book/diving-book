@@ -128,3 +128,16 @@ illu {
 	grid-row-start: 1;
 	grid-row-end: 2;
 }
+
+.btn-outline-primary,
+.btn-outline-primary:visited {
+	background-color: transparent !important;
+	color: #256d85;
+	border-color: #256d85;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:active {
+	background-color: #256d85 !important;
+	color: white;
+}
